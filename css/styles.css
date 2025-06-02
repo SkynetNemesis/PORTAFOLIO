@@ -71,6 +71,22 @@ body.dark{
     font-size: 0.8rem;
 }
 
+.flags{
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flags_item{
+    width: 30px;
+}
+
+.flags_img{
+    display: block;
+    cursor: pointer;
+}
+
 .colors{
     display: flex;
     justify-content: space-between;
@@ -169,10 +185,12 @@ body.dark{
     line-height: 1.6;
 }
 
-.card--project{
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    grid-column: 1 / -1;
+@media screen and (min-width: 760px) {
+    .card--project{
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        grid-column: 1 / -1;
+    }
 }
 
 .skills{
@@ -284,6 +302,10 @@ body.dark{
     margin-bottom: 1.5em;
 }
 
+.project {
+    position: relative;
+}
+
 @media screen and (min-width: 760px) {
     .project{
         margin-left: 2em;
@@ -305,11 +327,44 @@ body.dark{
     }
 }
 
-.projet_tag{
-    padding: .4em .8em;
+.project_tag{
+    padding: 0.4em 0.8em;
     border-radius: var(--border-radius);
     background-color: var(--primary-color);
     color: var(--bg-color);
+    transition: var(--transition);
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 225px;
+}
+
+@media screen and (min-width: 760px){
+    .buttons{
+        position: absolute;
+        bottom: 1em;
+    }
+}
+
+.button{
+    width: 100px;
+    line-height: 2.5;
+    text-align: center;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    color: var(--bg-color);
+}
+
+.button--primary{
+    background-color: var(--primary-color);
+}
+
+.button--ghost{
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
 .icon{

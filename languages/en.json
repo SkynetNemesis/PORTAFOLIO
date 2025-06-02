@@ -1,0 +1,27 @@
+{
+    "profile": {
+        "rol": "Web developer",
+        "description": "Junior Developer. Passionate about new technologies, especially the ecosystem of HTML, CSS, and JavaScript. My goal is to achieve a high level of knowledge in web technologies and to apply them in the field of programming through best practices."
+    },
+    "experience": {
+        "first-job-title": "Front End designer",
+        "first-job-dates": "May 2024 - Dicember 2024",
+        "first-job-description": "In May 2024, I participated in the development of a web system for the educational center 30073 San Pedro de Yauyo, Chupaca, serving as a Front End designer, using Figma as a prototyping tool for the user interfaces. This experience allowed me to gain a more comprehensive understanding of software development, where the goal is not only to provide the most optimal logic for good performance but also to work from a client perspective, focusing on the aesthetics and intuitive handling of web systems."
+    },
+    "hobbies": {
+        "first-hobbies-title": "Biking",
+        "first-hobbies-description": "I like riding a bicycle because it allows me to explore new places and enjoy the outdoors. I have visited several parks and trails by bike and have enjoyed the challenge of overcoming obstacles and improving my cycling skills. Riding a bicycle is a way I stay active and healthy, and I love the feeling of freedom and the thrill of speed."
+    },
+    "skills": {
+        "first-skills-title": "Front End",
+        "first-skills-description": "Years of experience",
+        "second-skills-title": "Design",
+        "second-skills-description": "Years of experience",
+        "third-skills-title": "Multimedia",
+        "third-skills-description": "Years of experience"
+    },
+    "projects": {
+        "first-project-title": "Week 1",
+        "first-project-description": "In this section, the work related to the Web Application Development course is stored."
+    }
+}

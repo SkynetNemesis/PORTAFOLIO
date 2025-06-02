@@ -18,6 +18,14 @@
           <p id="toggle-text" class="toggle-theme_text">Dark Mode</p>
         </div>
       </div>
+      <div id="flags" class="flags">
+        <div class="flags_item" data-language="es">
+          <img src="/assets/icons/es.svg" alt="">
+        </div>
+        <div class="flags_item" data-language="en">
+          <img src="/assets/icons/gb.svg" alt="">
+        </div>
+      </div>
       <div id="toggle-colors" class="colors">
         <!--Estos divs lo único que hacen es representar el color-->
         <div data-color="hsl(214, 84%, 56%)" class="colors_item colors_item--blue"></div>
@@ -35,7 +43,7 @@
           </div>
           <div class="card_header">
             <h2 class="card_title no-margin">Gabriel André Fernández Rojas</h2>
-            <p class="card_subtitle">Desarrollador Web</p>
+            <p class="card_subtitle" data-section="profile" data-value="rol">Desarrollador Web</p>
           </div>
           <div class="card_body">
             <div class="card_link">
@@ -48,7 +56,7 @@
                 +51-910772182
               </a>
             </div>
-            <p class="card_text">
+            <p class="card_text" data-section="profile" data-value="description">
               Desarrollador Junior. Apasionado por las nuevas tecnologías y en especial del ecosistema de HTML, CSS y JavaScript. <br />
               Mi propósito es alcanzar un alto grado de conocimiento en las tecnologías web y poder aplicarlos en el campo de la programación mediante buenas prácticas.
             </p>
@@ -59,11 +67,11 @@
           <div class="experience">
             <img src="assets/images/logo.png" alt="logo" class="experience_image">
           <div class="experience_info">
-            <p class="experience_time">
+            <p class="experience_time" data-section="experience" data-value="first-job-dates">
               May 2024 - Current
             </p>
-            <h3 class="experience_job">Front End Design</h3>
-            <p class="experience_description">
+            <h3 class="experience_job" data-section="experience" data-value="first-job-title">Front End Design</h3>
+            <p class="experience_description" data-section="experience" data-value="first-job-description">
               En el mes de mayo de 2024 participe en el desarrollo de un sistema web para el centro eductivo 30073 San Pedro de Yauyo, Chupaca
               desempeñándome como diseñador de Front End, mediante el uso de Figma como herramienta de prototipado para las interfaces de usuario.
               Esta experiencia me permitió generar un conocimiento más integro en el desarrollo de software donde no solo se busca dar la lógica más óptima
@@ -77,8 +85,8 @@
           <div class="card_image-container">
             <img src="assets/images/hobbie.jpg" alt="bike">
           </div>
-          <h3 class="hobbie_title">Biking</h3>
-          <p class="card_text">
+          <h3 class="hobbie_title" data-section="hobbies" data-value="first-hobbies-title">Biking</h3>
+          <p class="card_text" data-section="hobbies" data-value="first-hobbies-description">
             Me gusta montar bicicleta porque me permite explorar nuevos lugares y disfrutar del aire libre.
             He visitado varios parques y senderos en bicicleta y he disfrutado del desafío de superar 
             obstáculos y mejorar mi habilidad en la bicicleta. Montar bicicleta es una forma en que me mantengo 
@@ -88,8 +96,8 @@
       </section>
       <section class="column column--right">
         <article class="card">
-          <h2 class="card_title">Front End</h2>
-          <small>Años de experiencia</small>
+          <h2 class="card_title" data-section="skills" data-value="first-skills-title">Front End</h2>
+          <small data-section="skills" data-value="first-skills-description">Años de experiencia</small>
           <div class="skills">
           <div class="skills_header">
             <span class="skills_start-level">0</span>
@@ -120,8 +128,8 @@
           </div>
         </article>
         <article class="card">
-          <h2 class="card_title">Design</h2>
-          <small>Años de experiencia</small>
+          <h2 class="card_title" data-section="skills" data-value="second-skills-title">Diseño</h2>
+          <small data-section="skills" data-value="second-skills-description">Años de experiencia</small>
           <div class="skills">
             <div class="skills_header">
             <span class="skills_start-level">0</span>
@@ -140,8 +148,8 @@
           </div>
         </article>
         <article class="card">
-          <h2 class="card_title">Multimedia</h2>
-          <small>Años de experiencia</small>
+          <h2 class="card_title" data-section="skills" data-value="third-skills-title">Multimedia</h2>
+          <small data-section="skills" data-value="third-skills-description">Años de experiencia</small>
           <div class="skills">
             <div class="skills_header">
             <span class="skills_start-level">0</span>
@@ -169,14 +177,51 @@
               <span class="project_tag">#JavaScript</span>
               <span class="project_tag">#Responsive</span>
             </div>
+            <h2 class="card_title" data-section="projects" data-value="first-project-title">CUADERNO</h2>
+            <p class="car_text" data-section="projects" data-value="first-project-description">En este apartado se almacena los trabajos respectivos al curso de Desarrollo de Aplicaciones Web.</p>
+            <div class="buttons">
+              <a href="#" class="button button--primary">Demo</a>
+              <a href="#" class="button button--ghost">Code</a>
+            </div>
           </div>
-          <h2 class="card_title">CUADERNO</h2>
-          <p class="car_text">En este apartado se almacena los trabajos respectivos al curso de Desarroollo de Aplicaciones Web.</p>
-          <div class="buttons">
-            <a href="#" class=""button button--primary>Demo</a>
-            <a href="#" class=""button button--ghost>Code</a>
+        </article>
+        <article class="card card--project">
+          <div class="card_image-container">
+            <img src="assets/images/project.jpg" alt="Landing page" class="card_image">
           </div>
-
+          <div class="project">
+            <div class="project_tags">
+              <span class="project_tag">#HTML</span>
+              <span class="project_tag">#CSS</span>
+              <span class="project_tag">#JavaScript</span>
+              <span class="project_tag">#Responsive</span>
+            </div>
+            <h2 class="card_title">CUADERNO</h2>
+            <p class="car_text">En este apartado se almacena los trabajos respectivos al curso de Desarrollo de Aplicaciones Web.</p>
+            <div class="buttons">
+              <a href="#" class="button button--primary">Demo</a>
+              <a href="#" class="button button--ghost">Code</a>
+            </div>
+          </div>
+        </article>
+        <article class="card card--project">
+          <div class="card_image-container">
+            <img src="assets/images/project.jpg" alt="Landing page" class="card_image">
+          </div>
+          <div class="project">
+            <div class="project_tags">
+              <span class="project_tag">#HTML</span>
+              <span class="project_tag">#CSS</span>
+              <span class="project_tag">#JavaScript</span>
+              <span class="project_tag">#Responsive</span>
+            </div>
+            <h2 class="card_title">CUADERNO</h2>
+            <p class="car_text">En este apartado se almacena los trabajos respectivos al curso de Desarrollo de Aplicaciones Web.</p>
+            <div class="buttons">
+              <a href="#" class="button button--primary">Demo</a>
+              <a href="#" class="button button--ghost">Code</a>
+            </div>
+          </div>
         </article>
       </section>
     </main>
