@@ -1,0 +1,27 @@
+{
+    "profile": {
+        "rol": "Desarrollador Web",
+        "description": "Desarrollador Junior. Apasionado por las nuevas tecnologías y en especial del ecosistema de HTML, CSS y JavaScript. <br />Mi propósito es alcanzar un alto grado de conocimiento en las tecnologías web y poder aplicarlos en el campo de la programación mediante buenas prácticas."
+    },
+    "experience": {
+        "first-job-title": "Diseñador Front End",
+        "first-job-dates": "Mayo 2024 - Diciembre 2024",
+        "first-job-description": "En el mes de mayo de 2024 participe en el desarrollo de un sistema web para el centro eductivo 30073 San Pedro de Yauyo, Chupaca desempeñándome como diseñador de Front End, mediante el uso de Figma como herramienta de prototipado para las interfaces de usuario. Esta experiencia me permitió generar un conocimiento más integro en el desarrollo de software donde no solo se busca dar la lógica más óptima para el buen rendimiento, sino también trabajar desde una perspectiva del cliente, donde se busca la estética y manejo intuitivo de los sistemas web."
+    },
+    "hobbies": {
+        "first-hobbies-title": "Ciclismo",
+        "first-hobbies-description": "Me gusta montar bicicleta porque me permite explorar nuevos lugares y disfrutar del aire libre.He visitado varios parques y senderos en bicicleta y he disfrutado del desafío de superar obstáculos y mejorar mi habilidad en la bicicleta. Montar bicicleta es una forma en que me mantengo activo y saludable, y me gusta la sensación de libertad y la emoción de la velocidad."
+    },
+    "skills": {
+        "first-skills-title": "Front End",
+        "first-skills-description": "Años de experiencia",
+        "second-skills-title": "Diseño",
+        "second-skills-description": "Años de experiencia",
+        "third-skills-title": "Multimedia",
+        "third-skills-description": "Años de experiencia"
+    },
+    "projects": {
+        "first-project-title": "Semana 1",
+        "first-project-description": "En este apartado se almacena los trabajos respectivos al curso de Desarrollo de Aplicaciones Web."
+    }
+}
