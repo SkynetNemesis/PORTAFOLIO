@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Semana 10: Backend con Java Spring</title>
+    <style>
+        :root {
+            --primary-color: #6db33f;
+            --secondary-color: #34302d;
+            --accent-color: #5fa134;
+            --light-color: #f5f5f5;
+            --dark-color: #2c3e50;
+            --spring-color: #6db33f;
+            --jpa-color: #ff5722;
+            --hibernate-color: #59666c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.4rem;
+        }
+        
+        .tech-card {
+            background: white;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .code-block {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        
+        .keyword {
+            color: #6db33f;
+        }
+        
+        .annotation {
+            color: #f8c537;
+        }
+        
+        .string {
+            color: #2ecc71;
+        }
+        
+        .comment {
+            color: #95a5a6;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .comparison-table th, 
+        .comparison-table td {
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portafolio de Aprendizaje</h1>
+            <p class="subtitle">Semana 10: Desarrollo Web Backend con Java Spring</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="content-section">
+            <h2>Java Spring Framework</h2>
+            <p>Spring es el framework de aplicaciones Java más popular para construir aplicaciones empresariales. Proporciona un modelo de programación completo para aplicaciones backend.</p>
+            
+            <div class="tech-card">
+                <h3>Principales módulos de Spring</h3>
+                <ul>
+                    <li><strong>Spring Core:</strong> Inversión de Control (IoC) y Inyección de Dependencias</li>
+                    <li><strong>Spring MVC:</strong> Para aplicaciones web</li>
+                    <li><strong>Spring Boot:</strong> Autoconfiguración para proyectos rápidos</li>
+                    <li><strong>Spring Security:</strong> Autenticación y autorización</li>
+                    <li><strong>Spring Data:</strong> Simplifica el acceso a datos</li>
+                </ul>
+            </div>
+            
+            <h3>Ejemplo de Controlador Spring MVC</h3>
+            <div class="code-block">
+                <span class="annotation">@RestController</span><br>
+                <span class="annotation">@RequestMapping</span>(<span class="string">"/api"</span>)<br>
+                <span class="keyword">public class</span> <span class="annotation">ProductoController</span> {<br>
+                <br>
+                &nbsp;&nbsp;<span class="annotation">@Autowired</span><br>
+                &nbsp;&nbsp;<span class="keyword">private</span> ProductoService productoService;<br>
+                <br>
+                &nbsp;&nbsp;<span class="annotation">@GetMapping</span>(<span class="string">"/productos"</span>)<br>
+                &nbsp;&nbsp;<span class="keyword">public</span> List&lt;Producto&gt; <span class="annotation">listarProductos</span>() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> productoService.obtenerTodos();<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>JSP / Jakarta EE con Spring</h2>
+            <p>JavaServer Pages (JSP) es una tecnología para crear páginas web dinámicas. Spring MVC puede integrarse con JSP para la capa de vista.</p>
+            
+            <div class="tech-card">
+                <h3>Ventajas de usar JSP con Spring</h3>
+                <ul>
+                    <li>Fácil integración con Java</li>
+                    <li>Taglibs para reutilización de código</li>
+                    <li>Expression Language (EL) para acceso a datos</li>
+                    <li>JSTL para lógica de presentación</li>
+                </ul>
+            </div>
+            
+            <h3>Ejemplo de JSP con Spring MVC</h3>
+            <div class="code-block">
+                <span class="comment">&lt;!-- Controlador --&gt;</span><br>
+                <span class="annotation">@Controller</span><br>
+                <span class="keyword">public class</span> <span class="annotation">HomeController</span> {<br>
+                &nbsp;&nbsp;<span class="annotation">@GetMapping</span>(<span class="string">"/"</span>)<br>
+                &nbsp;&nbsp;<span class="keyword">public</span> String <span class="annotation">home</span>(Model model) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;model.addAttribute(<span class="string">"mensaje"</span>, <span class="string">"Bienvenido"</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">"home"</span>;<br>
+                &nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="comment">&lt;!-- Vista home.jsp --&gt;</span><br>
+                &lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;<br>
+                &lt;h1&gt;${mensaje}&lt;/h1&gt;
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Spring Data, Hibernate y JPA</h2>
+            
+            <div class="tech-card">
+                <h3>Comparación de tecnologías</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Tecnología</th>
+                        <th>Descripción</th>
+                        <th>Ventajas</th>
+                    </tr>
+                    <tr>
+                        <td><strong>JPA</strong></td>
+                        <td>Especificación para mapeo objeto-relacional</td>
+                        <td>Estándar, independiente del proveedor</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hibernate</strong></td>
+                        <td>Implementación más popular de JPA</td>
+                        <td>Rico conjunto de características, maduro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Spring Data JPA</strong></td>
+                        <td>Abstracción sobre JPA/Hibernate</td>
+                        <td>Reduce código boilerplate, repositorios</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Ejemplo de Entidad JPA</h3>
+            <div class="code-block">
+                <span class="annotation">@Entity</span><br>
+                <span class="annotation">@Table</span>(name = <span class="string">"productos"</span>)<br>
+                <span class="keyword">public class</span> <span class="annotation">Producto</span> {<br>
+                <br>
+                &nbsp;&nbsp;<span class="annotation">@Id</span><br>
+                &nbsp;&nbsp;<span class="annotation">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)<br>
+                &nbsp;&nbsp;<span class="keyword">private</span> Long id;<br>
+                <br>
+                &nbsp;&nbsp;<span class="annotation">@Column</span>(nullable = <span class="keyword">false</span>)<br>
+                &nbsp;&nbsp;<span class="keyword">private</span> String nombre;<br>
+                <br>
+                &nbsp;&nbsp;<span class="comment">// Getters y Setters</span><br>
+                }
+            </div>
+            
+            <h3>Ejemplo de Repositorio Spring Data</h3>
+            <div class="code-block">
+                <span class="keyword">public interface</span> <span class="annotation">ProductoRepository</span> <span class="keyword">extends</span> JpaRepository&lt;Producto, Long&gt; {<br>
+                &nbsp;&nbsp;List&lt;Producto&gt; <span class="annotation">findByNombreContaining</span>(String nombre);<br>
+                &nbsp;&nbsp;<span class="annotation">@Query</span>(<span class="string">"SELECT p FROM Producto p WHERE p.precio > :precio"</span>)<br>
+                &nbsp;&nbsp;List&lt;Producto&gt; <span class="annotation">findProductosConPrecioMayorA</span>(<span class="annotation">@Param</span>(<span class="string">"precio"</span>) BigDecimal precio);<br>
+                }
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Flujo típico Spring MVC + JPA</h2>
+            <ol>
+                <li>Cliente realiza petición HTTP</li>
+                <li>Spring MVC recibe la petición y la enruta al controlador adecuado</li>
+                <li>El controlador llama al servicio correspondiente</li>
+                <li>El servicio utiliza el repositorio Spring Data JPA</li>
+                <li>Spring Data JPA usa Hibernate para interactuar con la base de datos</li>
+                <li>Los resultados viajan de vuelta al cliente</li>
+            </ol>
+            
+            <h3>Ejemplo completo Service + Controller</h3>
+            <div class="code-block">
+                <span class="annotation">@Service</span><br>
+                <span class="keyword">public class</span> <span class="annotation">ProductoService</span> {<br>
+                &nbsp;&nbsp;<span class="annotation">@Autowired</span><br>
+                &nbsp;&nbsp;<span class="keyword">private</span> ProductoRepository repository;<br>
+                <br>
+                &nbsp;&nbsp;<span class="keyword">public</span> List&lt;Producto&gt; <span class="annotation">buscarPorNombre</span>(String nombre) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> repository.findByNombreContaining(nombre);<br>
+                &nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="annotation">@RestController</span><br>
+                <span class="annotation">@RequestMapping</span>(<span class="string">"/api/productos"</span>)<br>
+                <span class="keyword">public class</span> <span class="annotation">ProductoController</span> {<br>
+                &nbsp;&nbsp;<span class="annotation">@Autowired</span><br>
+                &nbsp;&nbsp;<span class="keyword">private</span> ProductoService service;<br>
+                <br>
+                &nbsp;&nbsp;<span class="annotation">@GetMapping</span><br>
+                &nbsp;&nbsp;<span class="keyword">public</span> ResponseEntity&lt;List&lt;Producto&gt;&gt; <span class="annotation">buscar</span>(<span class="annotation">@RequestParam</span> String nombre) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> ResponseEntity.ok(service.buscarPorNombre(nombre));<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Portafolio de Aprendizaje | Backend con Java Spring</p>
+        </div>
+    </footer>
+</body>
+</html>

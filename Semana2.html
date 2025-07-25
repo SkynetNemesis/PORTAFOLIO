@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Semana 2: Fundamentos HTML</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --html-color: #e44d26;
+            --xhtml-color: #0066cc;
+            --dom-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--html-color), var(--xhtml-color), var(--dom-color));
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-color);
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.8rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .comparison-table thead tr {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: left;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .comparison-table tbody tr:nth-of-type(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .comparison-table tbody tr:hover {
+            background-color: #e9f5ff;
+        }
+        
+        .element-anatomy {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--html-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        
+        .tag {
+            color: #e74c3c;
+        }
+        
+        .attribute {
+            color: #3498db;
+        }
+        
+        .value {
+            color: #2ecc71;
+        }
+        
+        .entity {
+            color: #9b59b6;
+        }
+        
+        .dom-diagram {
+            text-align: center;
+            margin: 2rem 0;
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+        }
+        
+        .dom-diagram img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .dom-tree {
+            font-family: monospace;
+            line-height: 1.8;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        
+        .html-box, .xhtml-box {
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            color: white;
+        }
+        
+        .html-box {
+            background-color: var(--html-color);
+            border-left: 6px solid darken(var(--html-color), 10%);
+        }
+        
+        .xhtml-box {
+            background-color: var(--xhtml-color);
+            border-left: 6px solid darken(var(--xhtml-color), 10%);
+        }
+        
+        .entity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .entity-table th,
+        .entity-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .entity-table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .entity-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-section {
+                padding: 1.8rem;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portafolio de Aprendizaje</h1>
+            <p class="subtitle">Semana 2: Fundamentos de HTML - Estructura, Etiquetas y DOM</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="content-section">
+            <h2>HTML vs XHTML</h2>
+            
+            <div class="html-box">
+                <h3>HTML (HyperText Markup Language)</h3>
+                <p>Es el lenguaje estándar para crear páginas web. HTML describe la estructura de una página web mediante el uso de elementos (etiquetas).</p>
+                <p><strong>Características principales:</strong></p>
+                <ul>
+                    <li>Lenguaje de marcado, no de programación</li>
+                    <li>Basado en etiquetas (tags)</li>
+                    <li>Permite cierta flexibilidad en la sintaxis</li>
+                    <li>Evoluciona constantemente (HTML5 es la última versión)</li>
+                </ul>
+            </div>
+            
+            <div class="xhtml-box">
+                <h3>XHTML (Extensible HyperText Markup Language)</h3>
+                <p>Es una reformulación de HTML como aplicación XML. Combina la familiaridad de HTML con el rigor de XML.</p>
+                <p><strong>Características principales:</strong></p>
+                <ul>
+                    <li>Sintaxis más estricta que HTML</li>
+                    <li>Debe estar bien formado (well-formed)</li>
+                    <li>Etiquetas deben cerrarse correctamente</li>
+                    <li>Atributos deben ir entre comillas</li>
+                    <li>Mejor compatibilidad con otros lenguajes basados en XML</li>
+                </ul>
+            </div>
+            
+            <h3>Comparación entre HTML y XHTML</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>HTML</th>
+                        <th>XHTML</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tipo de documento</td>
+                        <td>SGML</td>
+                        <td>XML</td>
+                    </tr>
+                    <tr>
+                        <td>Estricto en sintaxis</td>
+                        <td>No</td>
+                        <td>Sí</td>
+                    </tr>
+                    <tr>
+                        <td>Cierre de etiquetas</td>
+                        <td>Opcional en algunos casos</td>
+                        <td>Obligatorio siempre</td>
+                    </tr>
+                    <tr>
+                        <td>Minúsculas en etiquetas</td>
+                        <td>No requerido</td>
+                        <td>Obligatorio</td>
+                    </tr>
+                    <tr>
+                        <td>Atributos sin valor</td>
+                        <td>Permitidos (checked, disabled)</td>
+                        <td>No permitidos (debe ser checked="checked")</td>
+                    </tr>
+                    <tr>
+                        <td>DOCTYPE</td>
+                        <td>Menos estricto</td>
+                        <td>Más específico</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="content-section">
+            <h2>Anatomía de un Elemento HTML</h2>
+            
+            <div class="element-anatomy">
+                <p><strong>Estructura básica de una etiqueta HTML:</strong></p>
+                <p><span class="code">&lt;<span class="tag">nombre-etiqueta</span> <span class="attribute">atributo</span>=<span class="value">"valor"</span>&gt;Contenido&lt;/<span class="tag">nombre-etiqueta</span>&gt;</span></p>
+            </div>
+            
+            <h3>Componentes principales:</h3>
+            <ol>
+                <li><strong>Etiqueta de apertura:</strong> Indica el inicio del elemento (<span class="code">&lt;p&gt;</span>)</li>
+                <li><strong>Etiqueta de cierre:</strong> Indica el fin del elemento (<span class="code">&lt;/p&gt;</span>)</li>
+                <li><strong>Contenido:</strong> Texto u otros elementos dentro del elemento</li>
+                <li><strong>Atributos:</strong> Proporcionan información adicional sobre el elemento</li>
+            </ol>
+            
+            <h3>Ejemplo completo:</h3>
+            <div class="code" style="padding: 1.5rem; margin: 1rem 0;">
+                &lt;a <span class="attribute">href</span>=<span class="value">"https://ejemplo.com"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">class</span>=<span class="value">"enlace"</span> <span class="attribute">id</span>=<span class="value">"principal"</span>&gt;Visitar sitio&lt;/a&gt;
+            </div>
+            
+            <p><strong>Elementos vacíos:</strong> Algunos elementos no tienen contenido ni etiqueta de cierre:</p>
+            <ul>
+                <li><span class="code">&lt;img&gt;</span></li>
+                <li><span class="code">&lt;br&gt;</span></li>
+                <li><span class="code">&lt;hr&gt;</span></li>
+                <li><span class="code">&lt;input&gt;</span></li>
+                <li><span class="code">&lt;meta&gt;</span></li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>Etiquetas HTML Esenciales</h2>
+            
+            <h3>Estructura básica</h3>
+            <ul>
+                <li><span class="code">&lt;!DOCTYPE html&gt;</span> - Declara el tipo de documento</li>
+                <li><span class="code">&lt;html&gt;</span> - Elemento raíz</li>
+                <li><span class="code">&lt;head&gt;</span> - Metadatos del documento</li>
+                <li><span class="code">&lt;body&gt;</span> - Contenido visible</li>
+            </ul>
+            
+            <h3>Etiquetas de texto</h3>
+            <ul>
+                <li><span class="code">&lt;h1&gt;</span> a <span class="code">&lt;h6&gt;</span> - Encabezados</li>
+                <li><span class="code">&lt;p&gt;</span> - Párrafos</li>
+                <li><span class="code">&lt;strong&gt;</span>, <span class="code">&lt;em&gt;</span> - Énfasis</li>
+                <li><span class="code">&lt;span&gt;</span> - Contenedor genérico en línea</li>
+            </ul>
+            
+            <h3>Etiquetas de agrupación</h3>
+            <ul>
+                <li><span class="code">&lt;div&gt;</span> - Contenedor genérico en bloque</li>
+                <li><span class="code">&lt;ul&gt;</span>, <span class="code">&lt;ol&gt;</span>, <span class="code">&lt;li&gt;</span> - Listas</li>
+                <li><span class="code">&lt;nav&gt;</span> - Navegación</li>
+                <li><span class="code">&lt;header&gt;</span>, <span class="code">&lt;footer&gt;</span>, <span class="code">&lt;section&gt;</span>, <span class="code">&lt;article&gt;</span> - Semántica HTML5</li>
+            </ul>
+            
+            <h3>Etiquetas multimedia</h3>
+            <ul>
+                <li><span class="code">&lt;img&gt;</span> - Imágenes</li>
+                <li><span class="code">&lt;audio&gt;</span>, <span class="code">&lt;video&gt;</span> - Multimedia</li>
+                <li><span class="code">&lt;iframe&gt;</span> - Contenido embebido</li>
+            </ul>
+            
+            <h3>Etiquetas de formulario</h3>
+            <ul>
+                <li><span class="code">&lt;form&gt;</span> - Formulario</li>
+                <li><span class="code">&lt;input&gt;</span> - Campo de entrada</li>
+                <li><span class="code">&lt;textarea&gt;</span> - Área de texto</li>
+                <li><span class="code">&lt;select&gt;</span>, <span class="code">&lt;option&gt;</span> - Lista desplegable</li>
+                <li><span class="code">&lt;button&gt;</span> - Botón</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>Entidades HTML</h2>
+            
+            <p>Las entidades HTML son códigos especiales que representan caracteres que no se pueden teclear directamente o que tienen significado especial en HTML.</p>
+            
+            <h3>Ejemplos comunes:</h3>
+            <table class="entity-table">
+                <thead>
+                    <tr>
+                        <th>Carácter</th>
+                        <th>Entidad</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;</td>
+                        <td><span class="entity">&amp;lt;</span></td>
+                        <td>Menor que (less than)</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;</td>
+                        <td><span class="entity">&amp;gt;</span></td>
+                        <td>Mayor que (greater than)</td>
+                    </tr>
+                    <tr>
+                        <td>&amp;</td>
+                        <td><span class="entity">&amp;amp;</span></td>
+                        <td>Ampersand</td>
+                    </tr>
+                    <tr>
+                        <td>"</td>
+                        <td><span class="entity">&amp;quot;</span></td>
+                        <td>Comillas dobles</td>
+                    </tr>
+                    <tr>
+                        <td>'</td>
+                        <td><span class="entity">&amp;apos;</span></td>
+                        <td>Comilla simple (HTML5)</td>
+                    </tr>
+                    <tr>
+                        <td>©</td>
+                        <td><span class="entity">&amp;copy;</span></td>
+                        <td>Símbolo de copyright</td>
+                    </tr>
+                    <tr>
+                        <td>®</td>
+                        <td><span class="entity">&amp;reg;</span></td>
+                        <td>Símbolo registrado</td>
+                    </tr>
+                    <tr>
+                        <td>€</td>
+                        <td><span class="entity">&amp;euro;</span></td>
+                        <td>Símbolo del euro</td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td><span class="entity">&amp;nbsp;</span></td>
+                        <td>Espacio sin separación</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Uso de entidades numéricas:</h3>
+            <p>También se pueden usar códigos numéricos (decimales o hexadecimales):</p>
+            <ul>
+                <li><span class="entity">&amp;#169;</span> - © (decimal)</li>
+                <li><span class="entity">&amp;#xA9;</span> - © (hexadecimal)</li>
+                <li><span class="entity">&amp;#128512;</span> - 😀 (emoji)</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>DOM (Document Object Model)</h2>
+            
+            <p>El DOM es una representación en forma de árbol de los elementos de un documento HTML, donde cada nodo es un objeto que representa parte del documento.</p>
+            
+            <div class="dom-diagram">
+                <h3>Estructura del DOM</h3>
+                <p>Imagen representativa de un árbol DOM:</p>
+                <!-- En un caso real, aquí iría una imagen o diagrama SVG -->
+                <div style="background-color: #f8f9fa; padding: 1rem; border-radius: 4px; margin: 1rem 0; text-align: center;">
+                    [Árbol DOM: document → html → (head, body) → etc.]
+                </div>
+            </div>
+            
+            <h3>Características principales:</h3>
+            <ul>
+                <li>Representación jerárquica en forma de árbol</li>
+                <li>Cada elemento HTML es un nodo</li>
+                <li>Permite manipulación dinámica con JavaScript</li>
+                <li>Interfaz estandarizada para acceder y modificar documentos</li>
+            </ul>
+            
+            <h3>Ejemplo de estructura DOM:</h3>
+            <div class="dom-tree">
+                document<br>
+                ├── html<br>
+                │   ├── head<br>
+                │   │   ├── title<br>
+                │   │   └── meta<br>
+                │   └── body<br>
+                │       ├── h1<br>
+                │       ├── p<br>
+                │       └── div<br>
+                │           ├── p<br>
+                │           └── ul<br>
+                │               ├── li<br>
+                │               └── li<br>
+                └── ...
+            </div>
+            
+            <h3>Relación entre HTML y DOM:</h3>
+            <p>El navegador analiza (parsea) el código HTML y construye el árbol DOM que luego usa para renderizar la página. Cualquier cambio en el DOM se refleja en lo que se muestra al usuario.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Portafolio de Aprendizaje | Fundamentos Web - Semana 2: HTML</p>
+        </div>
+    </footer>
+</body>
+</html>

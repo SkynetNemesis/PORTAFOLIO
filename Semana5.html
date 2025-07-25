@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Semana 5: Introducción a React</title>
+    <style>
+        :root {
+            --primary-color: #61dafb;
+            --secondary-color: #20232a;
+            --accent-color: #00d8ff;
+            --light-color: #f5f5f5;
+            --dark-color: #282c34;
+            --react-color: #61dafb;
+            --jsx-color: #ff9900;
+            --cli-color: #00d8ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+            color: var(--react-color);
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--react-color), var(--jsx-color), var(--cli-color));
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            color: #fff;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--accent-color);
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-color);
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            margin: 1.8rem 0 1.2rem;
+            font-size: 1.5rem;
+        }
+        
+        h4 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            margin-bottom: 1.3rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1.8rem;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .info-box {
+            padding: 1.8rem;
+            margin: 1.8rem 0;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border-left: 5px solid var(--react-color);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--react-color);
+        }
+        
+        .feature-card h4 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        
+        .code-block {
+            background-color: var(--dark-color);
+            color: #ecf0f1;
+            padding: 1.8rem;
+            border-radius: 8px;
+            margin: 1.8rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.8;
+        }
+        
+        .keyword {
+            color: #61dafb;
+        }
+        
+        .tag {
+            color: #ff9900;
+        }
+        
+        .attribute {
+            color: #f8c537;
+        }
+        
+        .string {
+            color: #2ecc71;
+        }
+        
+        .number {
+            color: #e74c3c;
+        }
+        
+        .comment {
+            color: #95a5a6;
+        }
+        
+        .methods-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .methods-table thead tr {
+            background-color: var(--secondary-color);
+            color: var(--react-color);
+            text-align: left;
+        }
+        
+        .methods-table th,
+        .methods-table td {
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .methods-table tbody tr:nth-of-type(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .methods-table tbody tr:hover {
+            background-color: #e6f7ff;
+        }
+        
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .flex-example {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .cli-steps {
+            counter-reset: step-counter;
+            margin: 2rem 0;
+        }
+        
+        .cli-step {
+            position: relative;
+            padding-left: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cli-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--react-color);
+            color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .cli-command {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+        
+        .interactive-demo {
+            background-color: #f8f9fa;
+            border: 1px dashed #ccc;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .demo-button {
+            background-color: var(--react-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .demo-button:hover {
+            background-color: #00d8ff;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: var(--dark-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-section {
+                padding: 1.8rem;
+            }
+            
+            .features-grid,
+            .flex-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cli-step {
+                padding-left: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portafolio de Aprendizaje</h1>
+            <p class="subtitle">Semana 5: Introducción a React - La biblioteca de JavaScript para interfaces de usuario</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="content-section">
+            <h2>¿Qué es React?</h2>
+            
+            <div class="info-box">
+                <p><strong>React</strong> es una biblioteca de JavaScript desarrollada por Facebook para construir interfaces de usuario interactivas y componentes reutilizables.</p>
+                <p>Fue lanzada en 2013 y se ha convertido en una de las tecnologías más populares para el desarrollo frontend, utilizada por empresas como Facebook, Instagram, Netflix, Airbnb y muchas más.</p>
+            </div>
+            
+            <h3>Características principales:</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>Componentes</h4>
+                    <p>React organiza la UI en componentes independientes y reutilizables que manejan su propio estado.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>JSX</h4>
+                    <p>Sintaxis similar a HTML que permite escribir estructura de componentes de manera declarativa.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Virtual DOM</h4>
+                    <p>React usa un DOM virtual para actualizar eficientemente solo las partes necesarias del DOM real.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Flujo de datos unidireccional</h4>
+                    <p>Los datos fluyen en una sola dirección (de padre a hijo), haciendo el código más predecible.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Hooks</h4>
+                    <p>API moderna que permite usar estado y otras características de React sin clases.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>Ecosistema rico</h4>
+                    <p>Amplia comunidad y herramientas como React Router, Redux, Next.js, etc.</p>
+                </div>
+            </div>
+            
+            <h3>¿Por qué usar React?</h3>
+            <ul>
+                <li><strong>Eficiencia:</strong> El Virtual DOM mejora el rendimiento de las aplicaciones</li>
+                <li><strong>Reutilización:</strong> Los componentes pueden usarse múltiples veces</li>
+                <li><strong>Mantenibilidad:</strong> Código más organizado y fácil de mantener</li>
+                <li><strong>Popularidad:</strong> Gran comunidad y abundantes recursos de aprendizaje</li>
+                <li><strong>Demanda laboral:</strong> Una de las habilidades más solicitadas en frontend</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>Principales Características de React</h2>
+            
+            <div class="flex-container">
+                <div class="flex-example">
+                    <h4>Componentes</h4>
+                    <p>Los componentes son los bloques de construcción de React. Pueden ser de dos tipos:</p>
+                    <ul>
+                        <li><strong>Componentes de clase:</strong> Usan sintaxis de clases ES6</li>
+                        <li><strong>Componentes funcionales:</strong> Usan funciones JavaScript</li>
+                    </ul>
+                    
+                    <div class="code-block">
+                        <span class="comment">// Componente funcional</span><br>
+                        <span class="keyword">function</span> <span class="function">Saludo</span>(<span class="attribute">props</span>) {<br>
+                        &nbsp;&nbsp;<span class="keyword">return</span> <span class="tag">&lt;h1&gt;</span>Hola, <span class="attribute">{props.nombre}</span><span class="tag">&lt;/h1&gt;</span>;<br>
+                        }<br><br>
+                        
+                        <span class="comment">// Componente de clase</span><br>
+                        <span class="keyword">class</span> <span class="function">Saludo</span> <span class="keyword">extends</span> <span class="function">React.Component</span> {<br>
+                        &nbsp;&nbsp;<span class="function">render</span>() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="tag">&lt;h1&gt;</span>Hola, <span class="attribute">{this.props.nombre}</span><span class="tag">&lt;/h1&gt;</span>;<br>
+                        &nbsp;&nbsp;}<br>
+                        }
+                    </div>
+                </div>
+                
+                <div class="flex-example">
+                    <h4>JSX</h4>
+                    <p>JSX es una extensión de sintaxis que permite escribir HTML en JavaScript. No es obligatorio pero es muy usado.</p>
+                    
+                    <div class="code-block">
+                        <span class="comment">// Ejemplo de JSX</span><br>
+                        <span class="keyword">const</span> elemento = <span class="tag">&lt;h1 className="titulo"&gt;</span>Hola Mundo!<span class="tag">&lt;/h1&gt;</span>;<br><br>
+                        
+                        <span class="comment">// Equivalente en JavaScript puro</span><br>
+                        <span class="keyword">const</span> elemento = React.createElement(<br>
+                        &nbsp;&nbsp;<span class="string">'h1'</span>,<br>
+                        &nbsp;&nbsp;{className: <span class="string">'titulo'</span>},<br>
+                        &nbsp;&nbsp;<span class="string">'Hola Mundo!'</span><br>
+                        );
+                    </div>
+                    
+                    <p><strong>Nota:</strong> JSX necesita ser compilado a JavaScript normal para que los navegadores lo entiendan.</p>
+                </div>
+            </div>
+            
+            <h3>Estado (State) y Props</h3>
+            <div class="flex-container">
+                <div class="flex-example">
+                    <h4>Props</h4>
+                    <p>Son datos pasados de un componente padre a un componente hijo (inmutables).</p>
+                    <div class="code-block">
+                        <span class="comment">// Uso de props</span><br>
+                        <span class="keyword">function</span> <span class="function">Bienvenida</span>(<span class="attribute">props</span>) {<br>
+                        &nbsp;&nbsp;<span class="keyword">return</span> <span class="tag">&lt;h1&gt;</span>Hola, <span class="attribute">{props.nombre}</span><span class="tag">&lt;/h1&gt;</span>;<br>
+                        }<br><br>
+                        
+                        <span class="comment">// Llamada al componente</span><br>
+                        <span class="tag">&lt;Bienvenida nombre="Juan" /&gt;</span>
+                    </div>
+                </div>
+                
+                <div class="flex-example">
+                    <h4>Estado (State)</h4>
+                    <p>Datos internos de un componente que pueden cambiar (mutables).</p>
+                    <div class="code-block">
+                        <span class="comment">// Estado con Hooks (versión moderna)</span><br>
+                        <span class="keyword">function</span> <span class="function">Contador</span>() {<br>
+                        &nbsp;&nbsp;<span class="keyword">const</span> [contador, setContador] = <span class="function">React.useState</span>(<span class="number">0</span>);<br><br>
+                        
+                        &nbsp;&nbsp;<span class="keyword">return</span> (<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;div&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Contador: <span class="attribute">{contador}</span><span class="tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;button onClick={() =&gt; setContador(contador + 1)}&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incrementar<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/button&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/div&gt;</span><br>
+                        &nbsp;&nbsp;);<br>
+                        }
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Ciclo de Vida (Solo componentes de clase)</h3>
+            <div class="code-block">
+                <span class="keyword">class</span> <span class="function">Ejemplo</span> <span class="keyword">extends</span> <span class="function">React.Component</span> {<br>
+                &nbsp;&nbsp;<span class="function">constructor</span>(props) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>(props);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.state = { dato: <span class="string">''</span> };<br>
+                &nbsp;&nbsp;}<br><br>
+                
+                &nbsp;&nbsp;<span class="function">componentDidMount</span>() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Se ejecuta después del primer render</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Buen lugar para llamadas API</span><br>
+                &nbsp;&nbsp;}<br><br>
+                
+                &nbsp;&nbsp;<span class="function">componentDidUpdate</span>(prevProps, prevState) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Se ejecuta después de cada actualización</span><br>
+                &nbsp;&nbsp;}<br><br>
+                
+                &nbsp;&nbsp;<span class="function">componentWillUnmount</span>() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Se ejecuta antes de que el componente sea eliminado</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Buen lugar para limpieza</span><br>
+                &nbsp;&nbsp;}<br><br>
+                
+                &nbsp;&nbsp;<span class="function">render</span>() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="tag">&lt;div&gt;</span>Ejemplo<span class="tag">&lt;/div&gt;</span>;<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+            
+            <h3>Hooks (Alternativa moderna al ciclo de vida)</h3>
+            <div class="code-block">
+                <span class="keyword">import</span> React, { useState, useEffect } <span class="keyword">from</span> <span class="string">'react'</span>;<br><br>
+                
+                <span class="keyword">function</span> <span class="function">Ejemplo</span>() {<br>
+                &nbsp;&nbsp;<span class="keyword">const</span> [dato, setDato] = <span class="function">useState</span>(<span class="string">''</span>);<br><br>
+                
+                &nbsp;&nbsp;<span class="function">useEffect</span>(() =&gt; {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Equivalente a componentDidMount y componentDidUpdate</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">fetchData</span>();<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> () =&gt; {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Equivalente a componentWillUnmount</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">cleanUp</span>();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;};<br>
+                &nbsp;&nbsp;}, []); <span class="comment">// Array de dependencias</span><br><br>
+                
+                &nbsp;&nbsp;<span class="keyword">return</span> <span class="tag">&lt;div&gt;</span>Ejemplo<span class="tag">&lt;/div&gt;</span>;<br>
+                }
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Herramientas de Instalación con React</h2>
+            
+            <h3>Create React App (CRA)</h3>
+            <p>La forma oficial y más sencilla de empezar un proyecto React. Configura automáticamente:</p>
+            <ul>
+                <li>Bundler (Webpack)</li>
+                <li>Compilador (Babel)</li>
+                <li>Servidor de desarrollo</li>
+                <li>Configuración básica para testing</li>
+                <li>Optimizaciones para producción</li>
+            </ul>
+            
+            <div class="cli-steps">
+                <div class="cli-step">
+                    <h4>1. Instalar Node.js</h4>
+                    <p>React requiere Node.js (que incluye npm) para funcionar. Descargar de <a href="https://nodejs.org/" target="_blank">nodejs.org</a>.</p>
+                    <p>Verificar instalación:</p>
+                    <div class="cli-command">node --version</div>
+                    <div class="cli-command">npm --version</div>
+                </div>
+                
+                <div class="cli-step">
+                    <h4>2. Crear proyecto con Create React App</h4>
+                    <p>Ejecutar en terminal:</p>
+                    <div class="cli-command">npx create-react-app mi-proyecto</div>
+                    <p>O con yarn:</p>
+                    <div class="cli-command">yarn create react-app mi-proyecto</div>
+                </div>
+                
+                <div class="cli-step">
+                    <h4>3. Navegar al directorio del proyecto</h4>
+                    <div class="cli-command">cd mi-proyecto</div>
+                </div>
+                
+                <div class="cli-step">
+                    <h4>4. Iniciar servidor de desarrollo</h4>
+                    <div class="cli-command">npm start</div>
+                    <p>O con yarn:</p>
+                    <div class="cli-command">yarn start</div>
+                    <p>Esto abrirá automáticamente tu navegador en <a href="http://localhost:3000" target="_blank">http://localhost:3000</a></p>
+                </div>
+                
+                <div class="cli-step">
+                    <h4>5. Comandos útiles adicionales</h4>
+                    <p>Para construir versión de producción:</p>
+                    <div class="cli-command">npm run build</div>
+                    <p>Para ejecutar tests:</p>
+                    <div class="cli-command">npm test</div>
+                    <p>Para ejectuar (extraer configuración):</p>
+                    <div class="cli-command">npm run eject</div>
+                </div>
+            </div>
+            
+            <h3>Alternativas a Create React App</h3>
+            <table class="methods-table">
+                <thead>
+                    <tr>
+                        <th>Herramienta</th>
+                        <th>Descripción</th>
+                        <th>Ventajas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Vite</strong></td>
+                        <td>Herramienta moderna de construcción extremadamente rápida</td>
+                        <td>Velocidad, configuración sencilla, soporte nativo para ES modules</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Next.js</strong></td>
+                        <td>Framework React con renderizado del lado del servidor</td>
+                        <td>SSR, rutas integradas, optimización SEO</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gatsby</strong></td>
+                        <td>Generador de sitios estáticos con React</td>
+                        <td>Rendimiento, SEO, ideal para blogs/sitios de contenido</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Parcel</strong></td>
+                        <td>Bundler con configuración cero</td>
+                        <td>Sencillez, no requiere configuración</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Estructura de un proyecto React típico</h3>
+            <div class="code-block">
+                mi-proyecto/<br>
+                ├── node_modules/    <span class="comment"># Dependencias instaladas</span><br>
+                ├── public/          <span class="comment"># Archivos públicos (HTML, imágenes)</span><br>
+                │   ├── index.html   <span class="comment"># Plantilla HTML principal</span><br>
+                │   └── ...<br>
+                ├── src/             <span class="comment"># Código fuente principal</span><br>
+                │   ├── App.js       <span class="comment"># Componente principal</span><br>
+                │   ├── index.js     <span class="comment"># Punto de entrada JavaScript</span><br>
+                │   └── ...<br>
+                ├── package.json    <span class="comment"># Configuración del proyecto y dependencias</span><br>
+                └── ...
+            </div>
+            
+            <h3>Demo interactivo</h3>
+            <div class="interactive-demo">
+                <p>Este es un componente React simple que muestra el estado:</p>
+                <div id="react-demo-root"></div>
+                <button class="demo-button" onclick="mountReactDemo()">Montar Componente React</button>
+                <button class="demo-button" onclick="unmountReactDemo()" style="margin-left: 10px; background-color: #ff6b6b;">Desmontar Componente</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Portafolio de Aprendizaje | Fundamentos Web - Semana 5: React</p>
+        </div>
+    </footer>
+
+    <!-- Scripts para el demo interactivo -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel">
+        // Componente React para el demo
+        function ContadorReact() {
+            const [contador, setContador] = React.useState(0);
+            
+            return (
+                <div style={{ 
+                    padding: '20px', 
+                    backgroundColor: '#f0f0f0', 
+                    borderRadius: '8px',
+                    margin: '20px 0',
+                    textAlign: 'center'
+                }}>
+                    <h3 style={{ color: '#333' }}>Componente React en acción</h3>
+                    <p style={{ fontSize: '1.2rem' }}>Contador: {contador}</p>
+                    <button 
+                        onClick={() => setContador(contador + 1)}
+                        style={{
+                            padding: '8px 16px',
+                            backgroundColor: '#61dafb',
+                            color: '#20232a',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontWeight: 'bold'
+                        }}
+                    >
+                        Incrementar
+                    </button>
+                </div>
+            );
+        }
+        
+        // Funciones para montar/desmontar el demo
+        function mountReactDemo() {
+            ReactDOM.render(
+                <ContadorReact />,
+                document.getElementById('react-demo-root')
+            );
+        }
+        
+        function unmountReactDemo() {
+            ReactDOM.unmountComponentAtNode(
+                document.getElementById('react-demo-root')
+            );
+        }
+        
+        // Montar automáticamente al cargar si hay un parámetro demo=true
+        if (window.location.search.includes('demo=true')) {
+            window.addEventListener('DOMContentLoaded', mountReactDemo);
+        }
+    </script>
+</body>
+</html>

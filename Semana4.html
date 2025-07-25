@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Semana 4: Fundamentos JavaScript</title>
+    <style>
+        :root {
+            --primary-color: #f0db4f;
+            --secondary-color: #323330;
+            --accent-color: #f89820;
+            --light-color: #f5f5f5;
+            --dark-color: #2c3e50;
+            --js-color: #f0db4f;
+            --es6-color: #323330;
+            --class-color: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+            color: var(--js-color);
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--js-color), var(--es6-color), var(--class-color));
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            color: #fff;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--accent-color);
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-color);
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            margin: 1.8rem 0 1.2rem;
+            font-size: 1.5rem;
+        }
+        
+        h4 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            margin-bottom: 1.3rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1.8rem;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .info-box {
+            padding: 1.8rem;
+            margin: 1.8rem 0;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border-left: 5px solid var(--js-color);
+        }
+        
+        .history-timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .history-timeline::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--js-color), var(--es6-color));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -3.2rem;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--js-color);
+            border: 3px solid var(--es6-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .methods-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .methods-table thead tr {
+            background-color: var(--secondary-color);
+            color: var(--js-color);
+            text-align: left;
+        }
+        
+        .methods-table th,
+        .methods-table td {
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .methods-table tbody tr:nth-of-type(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .methods-table tbody tr:hover {
+            background-color: #fef9e7;
+        }
+        
+        .code-block {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.8rem;
+            border-radius: 8px;
+            margin: 1.8rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.8;
+        }
+        
+        .keyword {
+            color: #f0db4f;
+        }
+        
+        .function {
+            color: #3498db;
+        }
+        
+        .string {
+            color: #2ecc71;
+        }
+        
+        .number {
+            color: #e74c3c;
+        }
+        
+        .comment {
+            color: #95a5a6;
+        }
+        
+        .operator {
+            color: #9b59b6;
+        }
+        
+        .selectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .selector-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--js-color);
+        }
+        
+        .selector-card h4 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .flex-example {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .properties-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .properties-table th,
+        .properties-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .properties-table th {
+            background-color: var(--secondary-color);
+            color: var(--js-color);
+        }
+        
+        .properties-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        
+        .interactive-demo {
+            background-color: #f8f9fa;
+            border: 1px dashed #ccc;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .demo-button {
+            background-color: var(--js-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .demo-button:hover {
+            background-color: #f1c40f;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: var(--dark-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-section {
+                padding: 1.8rem;
+            }
+            
+            .selectors-grid,
+            .flex-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portafolio de Aprendizaje</h1>
+            <p class="subtitle">Semana 4: Fundamentos de JavaScript - Sintaxis, Estructuras y Programación Orientada a Objetos</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="content-section">
+            <h2>Evolución de JavaScript</h2>
+            
+            <div class="info-box">
+                <p><strong>JavaScript</strong> es un lenguaje de programación interpretado, dialecto del estándar ECMAScript. Se utiliza principalmente en el desarrollo web para añadir interactividad a las páginas.</p>
+                <p>Creado en 10 días por Brendan Eich en 1995 mientras trabajaba en Netscape, ha evolucionado hasta convertirse en uno de los lenguajes más populares del mundo.</p>
+            </div>
+            
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <span class="timeline-year">1995</span>
+                    <div class="timeline-content">
+                        <p>Nace JavaScript (originalmente Mocha, luego LiveScript) creado por Brendan Eich en Netscape.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">1997</span>
+                    <div class="timeline-content">
+                        <p>Primer estándar ECMAScript (ES1). JavaScript se estandariza bajo el nombre ECMAScript.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">2005</span>
+                    <div class="timeline-content">
+                        <p>Aparece AJAX (Asynchronous JavaScript and XML), revolucionando las aplicaciones web.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">2009</span>
+                    <div class="timeline-content">
+                        <p>ES5 (ECMAScript 5) con nuevas características como JSON, strict mode y métodos de arrays.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">2015</span>
+                    <div class="timeline-content">
+                        <p>ES6 (ECMAScript 2015) - La mayor actualización: clases, módulos, arrow functions, let/const, etc.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">2016-2022</span>
+                    <div class="timeline-content">
+                        <p>Actualizaciones anuales (ES2016 a ES2022) con async/await, optional chaining, nullish coalescing y más.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Principales diferencias entre ES5 y ES6+:</h3>
+            <ul>
+                <li><strong>Declaración de variables:</strong> <span class="code">let</span> y <span class="code">const</span> en lugar de solo <span class="code">var</span></li>
+                <li><strong>Arrow functions:</strong> Sintaxis más corta para funciones</li>
+                <li><strong>Clases:</strong> Sintaxis más clara para POO</li>
+                <li><strong>Módulos:</strong> Import/export para organizar código</li>
+                <li><strong>Template literals:</strong> Interpolación de strings con <span class="code">`${variable}`</span></li>
+                <li><strong>Desestructuración:</strong> Extraer valores de objetos/arrays fácilmente</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>Enlazar JavaScript con HTML</h2>
+            
+            <table class="methods-table">
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Sintaxis</th>
+                        <th>Ventajas</th>
+                        <th>Desventajas</th>
+                        <th>Uso recomendado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Inline (en línea)</strong></td>
+                        <td><span class="code">&lt;button onclick="miFunc()"&gt;</span></td>
+                        <td>Rápido para pruebas</td>
+                        <td>Mezcla HTML/JS, difícil mantenimiento</td>
+                        <td>Evitar, solo para pruebas rápidas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interno (script)</strong></td>
+                        <td><span class="code">&lt;script&gt; código JS &lt;/script&gt;</span></td>
+                        <td>Útil para código específico de una página</td>
+                        <td>No reutilizable, mezcla estructura/comportamiento</td>
+                        <td>Pequeños scripts o configuraciones</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Externo (archivo .js)</strong></td>
+                        <td><span class="code">&lt;script src="script.js"&gt;&lt;/script&gt;</span></td>
+                        <td>Mantenimiento fácil, reutilizable, caché</td>
+                        <td>Requiere HTTP request adicional</td>
+                        <td>Recomendado para la mayoría de casos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulos ES6</strong></td>
+                        <td><span class="code">&lt;script type="module" src="modulo.js"&gt;&lt;/script&gt;</span></td>
+                        <td>Modularización, scope propio, import/export</td>
+                        <td>Soporte en navegadores modernos</td>
+                        <td>Proyectos modernos con múltiples archivos</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Mejores prácticas:</h3>
+            <ul>
+                <li>Colocar scripts antes de cerrar <span class="code">&lt;/body&gt;</span> para no bloquear renderizado</li>
+                <li>Usar <span class="code">defer</span> o <span class="code">async</span> cuando sea necesario</li>
+                <li>Para módulos, usar <span class="code">type="module"</span></li>
+                <li>Organizar código en archivos por funcionalidad</li>
+            </ul>
+            
+            <h3>Ejemplo recomendado:</h3>
+            <div class="code-block">
+                <span class="comment">&lt;!-- Al final del body --&gt;</span><br>
+                &lt;<span class="keyword">script</span> <span class="function">src</span>=<span class="string">"js/main.js"</span> <span class="function">defer</span>&gt;&lt;/<span class="keyword">script</span>&gt;
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Variables y Declaración</h2>
+            
+            <div class="flex-container">
+                <div class="flex-example">
+                    <h4>Tipos de variables</h4>
+                    <ul>
+                        <li><span class="code"><span class="keyword">var</span></span> - Alcance de función (evitar en ES6+)</li>
+                        <li><span class="code"><span class="keyword">let</span></span> - Alcance de bloque, mutable</li>
+                        <li><span class="code"><span class="keyword">const</span></span> - Alcance de bloque, inmutable</li>
+                    </ul>
+                    
+                    <h4>Tipos de datos</h4>
+                    <ul>
+                        <li><span class="code">String</span> - Cadena de texto</li>
+                        <li><span class="code">Number</span> - Números (enteros/decimales)</li>
+                        <li><span class="code">Boolean</span> - true/false</li>
+                        <li><span class="code">null</span> - Valor nulo intencional</li>
+                        <li><span class="code">undefined</span> - Variable no asignada</li>
+                        <li><span class="code">Object</span> - Estructuras complejas</li>
+                        <li><span class="code">Symbol</span> - Valor único (ES6+)</li>
+                    </ul>
+                </div>
+                
+                <div class="flex-example">
+                    <h4>Ejemplos de declaración</h4>
+                    <div class="code-block">
+                        <span class="comment">// Variables mutables</span><br>
+                        <span class="keyword">let</span> nombre = <span class="string">"Juan"</span>;<br>
+                        <span class="keyword">let</span> edad = <span class="number">30</span>;<br>
+                        <span class="keyword">let</span> esEstudiante = <span class="keyword">true</span>;<br><br>
+                        
+                        <span class="comment">// Constantes</span><br>
+                        <span class="keyword">const</span> PI = <span class="number">3.1416</span>;<br>
+                        <span class="keyword">const</span> COLORES = [<span class="string">"rojo"</span>, <span class="string">"verde"</span>];<br><br>
+                        
+                        <span class="comment">// Alcance de bloque (no funciona fuera de {})</span><br>
+                        {<br>
+                        &nbsp;&nbsp;<span class="keyword">let</span> mensaje = <span class="string">"Hola"</span>;<br>
+                        &nbsp;&nbsp;<span class="keyword">const</span> DESPEDIDA = <span class="string">"Adiós"</span>;<br>
+                        }<br><br>
+                        
+                        <span class="comment">// Hoisting (solo con var, evitar)</span><br>
+                        console.log(x); <span class="comment">// undefined</span><br>
+                        <span class="keyword">var</span> x = <span class="number">5</span>;
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Reglas para nombres de variables:</h3>
+            <ul>
+                <li>Pueden contener letras, números, <span class="code">_</span> y <span class="code">$</span></li>
+                <li>No pueden comenzar con número</li>
+                <li>Diferencia entre mayúsculas y minúsculas</li>
+                <li>Usar camelCase para nombres compuestos</li>
+                <li>Usar nombres descriptivos</li>
+                <li>Constantes en MAYÚSCULAS con _</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>Operadores</h2>
+            
+            <div class="selectors-grid">
+                <div class="selector-card">
+                    <h4>Aritméticos</h4>
+                    <ul>
+                        <li><span class="code">+ - * / % **</span></li>
+                        <li><span class="code">++ --</span> (incremento/decremento)</li>
+                        <li><span class="code">+= -= *= /=</span> (asignación compuesta)</li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Comparación</h4>
+                    <ul>
+                        <li><span class="code">== !=</span> (igualdad sin tipo)</li>
+                        <li><span class="code">=== !==</span> (igualdad estricta)</li>
+                        <li><span class="code">&gt; &lt; &gt;= &lt;=</span></li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Lógicos</h4>
+                    <ul>
+                        <li><span class="code">&&</span> (AND)</li>
+                        <li><span class="code">||</span> (OR)</li>
+                        <li><span class="code">!</span> (NOT)</li>
+                        <li><span class="code">??</span> (Nullish coalescing - ES2020)</li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Ternario</h4>
+                    <p><span class="code">condición ? expr1 : expr2</span></p>
+                    <div class="code-block" style="padding: 1rem; margin: 0.5rem 0;">
+                        <span class="keyword">let</span> acceso = edad &gt;= <span class="number">18</span> ? <span class="string">"Permitido"</span> : <span class="string">"Denegado"</span>;
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Ejemplos de operadores:</h3>
+            <div class="code-block">
+                <span class="comment">// Aritméticos</span><br>
+                <span class="keyword">let</span> suma = <span class="number">5</span> + <span class="number">3</span>; <span class="comment">// 8</span><br>
+                <span class="keyword">let</span> resto = <span class="number">10</span> % <span class="number">3</span>; <span class="comment">// 1</span><br>
+                <span class="keyword">let</span> potencia = <span class="number">2</span> ** <span class="number">3</span>; <span class="comment">// 8</span><br><br>
+                
+                <span class="comment">// Comparación</span><br>
+                <span class="number">5</span> == <span class="string">"5"</span>; <span class="comment">// true (coerción de tipos)</span><br>
+                <span class="number">5</span> === <span class="string">"5"</span>; <span class="comment">// false</span><br><br>
+                
+                <span class="comment">// Lógicos</span><br>
+                <span class="keyword">true</span> && <span class="keyword">false</span>; <span class="comment">// false</span><br>
+                <span class="keyword">true</span> || <span class="keyword">false</span>; <span class="comment">// true</span><br>
+                !<span class="keyword">true</span>; <span class="comment">// false</span><br><br>
+                
+                <span class="comment">// Nullish coalescing</span><br>
+                <span class="keyword">let</span> valor = <span class="keyword">null</span> ?? <span class="string">"default"</span>; <span class="comment">// "default"</span>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Estructuras de Control y Bucles</h2>
+            
+            <div class="flex-container">
+                <div class="flex-example">
+                    <h4>Condicionales</h4>
+                    <div class="code-block">
+                        <span class="comment">// if-else</span><br>
+                        <span class="keyword">if</span> (edad &gt;= <span class="number">18</span>) {<br>
+                        &nbsp;&nbsp;console.log(<span class="string">"Mayor de edad"</span>);<br>
+                        } <span class="keyword">else</span> <span class="keyword">if</span> (edad &gt;= <span class="number">12</span>) {<br>
+                        &nbsp;&nbsp;console.log(<span class="string">"Adolescente"</span>);<br>
+                        } <span class="keyword">else</span> {<br>
+                        &nbsp;&nbsp;console.log(<span class="string">"Niño"</span>);<br>
+                        }<br><br>
+                        
+                        <span class="comment">// switch</span><br>
+                        <span class="keyword">switch</span>(diaSemana) {<br>
+                        &nbsp;&nbsp;<span class="keyword">case</span> <span class="number">1</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(<span class="string">"Lunes"</span>);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span>;<br>
+                        &nbsp;&nbsp;<span class="keyword">case</span> <span class="number">2</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(<span class="string">"Martes"</span>);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span>;<br>
+                        &nbsp;&nbsp;<span class="keyword">default</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(<span class="string">"Otro día"</span>);<br>
+                        }
+                    </div>
+                </div>
+                
+                <div class="flex-example">
+                    <h4>Bucles</h4>
+                    <div class="code-block">
+                        <span class="comment">// for</span><br>
+                        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {<br>
+                        &nbsp;&nbsp;console.log(i);<br>
+                        }<br><br>
+                        
+                        <span class="comment">// while</span><br>
+                        <span class="keyword">let</span> j = <span class="number">0</span>;<br>
+                        <span class="keyword">while</span>(j &lt; <span class="number">5</span>) {<br>
+                        &nbsp;&nbsp;console.log(j);<br>
+                        &nbsp;&nbsp;j++;<br>
+                        }<br><br>
+                        
+                        <span class="comment">// do-while</span><br>
+                        <span class="keyword">let</span> k = <span class="number">0</span>;<br>
+                        <span class="keyword">do</span> {<br>
+                        &nbsp;&nbsp;console.log(k);<br>
+                        &nbsp;&nbsp;k++;<br>
+                        } <span class="keyword">while</span>(k &lt; <span class="number">5</span>);<br><br>
+                        
+                        <span class="comment">// for-of (arrays)</span><br>
+                        <span class="keyword">const</span> frutas = [<span class="string">'manzana'</span>, <span class="string">'banana'</span>];<br>
+                        <span class="keyword">for</span>(<span class="keyword">const</span> fruta <span class="keyword">of</span> frutas) {<br>
+                        &nbsp;&nbsp;console.log(fruta);<br>
+                        }<br><br>
+                        
+                        <span class="comment">// for-in (objetos)</span><br>
+                        <span class="keyword">const</span> persona = {nombre: <span class="string">'Juan'</span>, edad: <span class="number">30</span>};<br>
+                        <span class="keyword">for</span>(<span class="keyword">const</span> clave <span class="keyword">in</span> persona) {<br>
+                        &nbsp;&nbsp;console.log(clave, persona[clave]);<br>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Funciones</h2>
+            
+            <div class="flex-container">
+                <div class="flex-example">
+                    <h4>Declaración de funciones</h4>
+                    <div class="code-block">
+                        <span class="comment">// Declaración tradicional</span><br>
+                        <span class="keyword">function</span> <span class="function">saludar</span>(nombre) {<br>
+                        &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">`Hola <span class="operator">${</span>nombre<span class="operator">}</span>`</span>;<br>
+                        }<br><br>
+                        
+                        <span class="comment">// Expresión de función</span><br>
+                        <span class="keyword">const</span> sumar = <span class="keyword">function</span>(a, b) {<br>
+                        &nbsp;&nbsp;<span class="keyword">return</span> a + b;<br>
+                        };<br><br>
+                        
+                        <span class="comment">// Arrow function (ES6+)</span><br>
+                        <span class="keyword">const</span> multiplicar = (a, b) =&gt; a * b;<br><br>
+                        
+                        <span class="comment">// Arrow function con múltiples líneas</span><br>
+                        <span class="keyword">const</span> operacion = (a, b) =&gt; {<br>
+                        &nbsp;&nbsp;<span class="keyword">const</span> suma = a + b;<br>
+                        &nbsp;&nbsp;<span class="keyword">const</span> producto = a * b;<br>
+                        &nbsp;&nbsp;<span class="keyword">return</span> suma + producto;<br>
+                        };
+                    </div>
+                </div>
+                
+                <div class="flex-example">
+                    <h4>Características</h4>
+                    <ul>
+                        <li><strong>Parámetros:</strong> Pueden tener valores por defecto</li>
+                        <li><strong>Arguments:</strong> Objeto con todos los argumentos</li>
+                        <li><strong>Rest parameters:</strong> Captura múltiples argumentos como array</li>
+                        <li><strong>Scope:</strong> Las funciones crean su propio ámbito</li>
+                    </ul>
+                    
+                    <div class="code-block">
+                        <span class="comment">// Parámetros por defecto</span><br>
+                        <span class="keyword">function</span> <span class="function">saludar</span>(nombre = <span class="string">"Usuario"</span>) {<br>
+                        &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">`Hola <span class="operator">${</span>nombre<span class="operator">}</span>`</span>;<br>
+                        }<br><br>
+                        
+                        <span class="comment">// Rest parameters</span><br>
+                        <span class="keyword">function</span> <span class="function">sumar</span>(...numeros) {<br>
+                        &nbsp;&nbsp;<span class="keyword">return</span> numeros.reduce((a, b) =&gt; a + b, <span class="number">0</span>);<br>
+                        }<br><br>
+                        
+                        <span class="comment">// Funciones como valores</span><br>
+                        <span class="keyword">const</span> operaciones = {<br>
+                        &nbsp;&nbsp;sumar: (a, b) =&gt; a + b,<br>
+                        &nbsp;&nbsp;restar: (a, b) =&gt; a - b<br>
+                        };<br>
+                        operaciones.sumar(<span class="number">5</span>, <span class="number">3</span>); <span class="comment">// 8</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Diferencias entre function y arrow function:</h3>
+            <ul>
+                <li><strong>Sintaxis:</strong> Arrow functions son más concisas</li>
+                <li><strong>this:</strong> Las arrow functions no tienen su propio <span class="code">this</span></li>
+                <li><strong>arguments:</strong> Las arrow functions no tienen objeto arguments</li>
+                <li><strong>Constructor:</strong> Las arrow functions no pueden ser usadas como constructores</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>Módulo Math</h2>
+            
+            <div class="info-box" style="border-left-color: var(--accent-color);">
+                <p>El objeto <strong>Math</strong> proporciona propiedades y métodos para constantes y funciones matemáticas. No es un constructor, todas sus propiedades y métodos son estáticos.</p>
+            </div>
+            
+            <div class="selectors-grid">
+                <div class="selector-card">
+                    <h4>Propiedades (Constantes)</h4>
+                    <ul>
+                        <li><span class="code">Math.PI</span> - π (3.141592...)</li>
+                        <li><span class="code">Math.E</span> - e (2.718281...)</li>
+                        <li><span class="code">Math.SQRT2</span> - √2 (1.414213...)</li>
+                        <li><span class="code">Math.LN2</span> - ln(2) (0.693147...)</li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Métodos comunes</h4>
+                    <ul>
+                        <li><span class="code">Math.round(x)</span> - Redondeo</li>
+                        <li><span class="code">Math.floor(x)</span> - Redondeo hacia abajo</li>
+                        <li><span class="code">Math.ceil(x)</span> - Redondeo hacia arriba</li>
+                        <li><span class="code">Math.random()</span> - Número aleatorio [0,1)</li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Operaciones matemáticas</h4>
+                    <ul>
+                        <li><span class="code">Math.pow(x, y)</span> - x elevado a y</li>
+                        <li><span class="code">Math.sqrt(x)</span> - Raíz cuadrada</li>
+                        <li><span class="code">Math.abs(x)</span> - Valor absoluto</li>
+                        <li><span class="code">Math.max(...nums)</span> - Máximo</li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Funciones trigonométricas</h4>
+                    <ul>
+                        <li><span class="code">Math.sin(x)</span> - Seno (radianes)</li>
+                        <li><span class="code">Math.cos(x)</span> - Coseno</li>
+                        <li><span class="code">Math.tan(x)</span> - Tangente</li>
+                        <li><span class="code">Math.log(x)</span> - Logaritmo natural</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Ejemplos prácticos:</h3>
+            <div class="code-block">
+                <span class="comment">// Número aleatorio entre min y max</span><br>
+                <span class="keyword">function</span> <span class="function">randomInRange</span>(min, max) {<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> Math.floor(Math.random() * (max - min + <span class="number">1</span>)) + min;<br>
+                }<br><br>
+                
+                <span class="comment">// Calcular hipotenusa</span><br>
+                <span class="keyword">function</span> <span class="function">hipotenusa</span>(a, b) {<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> Math.sqrt(Math.pow(a, <span class="number">2</span>) + Math.pow(b, <span class="number">2</span>));<br>
+                }<br><br>
+                
+                <span class="comment">// Redondear a 2 decimales</span><br>
+                <span class="keyword">function</span> <span class="function">redondear</span>(num) {<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> Math.round(num * <span class="number">100</span>) / <span class="number">100</span>;<br>
+                }
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Objetos y Clases</h2>
+            
+            <div class="flex-container">
+                <div class="flex-example">
+                    <h4>Objetos literales</h4>
+                    <div class="code-block">
+                        <span class="comment">// Creación de objeto</span><br>
+                        <span class="keyword">const</span> persona = {<br>
+                        &nbsp;&nbsp;nombre: <span class="string">"Juan"</span>,<br>
+                        &nbsp;&nbsp;edad: <span class="number">30</span>,<br>
+                        &nbsp;&nbsp;saludar: <span class="keyword">function</span>() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(<span class="string">`Hola, soy <span class="operator">${</span><span class="keyword">this</span>.nombre<span class="operator">}</span>`</span>);<br>
+                        &nbsp;&nbsp;}<br>
+                        };<br><br>
+                        
+                        <span class="comment">// Acceso a propiedades</span><br>
+                        persona.nombre; <span class="comment">// "Juan"</span><br>
+                        persona[<span class="string">"edad"</span>]; <span class="comment">// 30</span><br>
+                        persona.saludar(); <span class="comment">// "Hola, soy Juan"</span><br><br>
+                        
+                        <span class="comment">// Añadir/modificar propiedades</span><br>
+                        persona.profesion = <span class="string">"Desarrollador"</span>;<br>
+                        persona.edad = <span class="number">31</span>;
+                    </div>
+                </div>
+                
+                <div class="flex-example">
+                    <h4>Clases (ES6+)</h4>
+                    <div class="code-block">
+                        <span class="comment">// Definición de clase</span><br>
+                        <span class="keyword">class</span> <span class="function">Persona</span> {<br>
+                        &nbsp;&nbsp;<span class="function">constructor</span>(nombre, edad) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.nombre = nombre;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.edad = edad;<br>
+                        &nbsp;&nbsp;}<br><br>
+                        
+                        &nbsp;&nbsp;<span class="comment">// Método</span><br>
+                        &nbsp;&nbsp;<span class="function">saludar</span>() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(<span class="string">`Hola, soy <span class="operator">${</span><span class="keyword">this</span>.nombre<span class="operator">}</span>`</span>);<br>
+                        &nbsp;&nbsp;}<br>
+                        }<br><br>
+                        
+                        <span class="comment">// Creación de instancia</span><br>
+                        <span class="keyword">const</span> juan = <span class="keyword">new</span> <span class="function">Persona</span>(<span class="string">"Juan"</span>, <span class="number">30</span>);<br>
+                        juan.saludar(); <span class="comment">// "Hola, soy Juan"</span><br><br>
+                        
+                        <span class="comment">// Herencia</span><br>
+                        <span class="keyword">class</span> <span class="function">Desarrollador</span> <span class="keyword">extends</span> <span class="function">Persona</span> {<br>
+                        &nbsp;&nbsp;<span class="function">constructor</span>(nombre, edad, lenguaje) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>(nombre, edad);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.lenguaje = lenguaje;<br>
+                        &nbsp;&nbsp;}<br><br>
+                        
+                        &nbsp;&nbsp;<span class="function">programar</span>() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(<span class="string">`Programando en <span class="operator">${</span><span class="keyword">this</span>.lenguaje<span class="operator">}</span>`</span>);<br>
+                        &nbsp;&nbsp;}<br>
+                        }<br><br>
+                        
+                        <span class="keyword">const</span> dev = <span class="keyword">new</span> <span class="function">Desarrollador</span>(<span class="string">"Ana"</span>, <span class="number">25</span>, <span class="string">"JavaScript"</span>);<br>
+                        dev.saludar(); <span class="comment">// "Hola, soy Ana"</span><br>
+                        dev.programar(); <span class="comment">// "Programando en JavaScript"</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Características de las clases:</h3>
+            <ul>
+                <li><strong>constructor:</strong> Método especial para inicializar objetos</li>
+                <li><strong>Métodos:</strong> Funciones definidas dentro de la clase</li>
+                <li><strong>Herencia:</strong> Extender clases con <span class="code">extends</span></li>
+                <li><strong>super:</strong> Llamar al constructor/métodos de la clase padre</li>
+                <li><strong>static:</strong> Métodos/propiedades de clase (no de instancia)</li>
+                <li><strong>Getters/Setters:</strong> Para acceder/modificar propiedades</li>
+            </ul>
+            
+            <h3>Ejemplo interactivo:</h3>
+            <div class="interactive-demo">
+                <p>Crear una instancia de Persona:</p>
+                <div class="code-block" style="margin: 0.5rem 0;">
+                    <span class="keyword">const</span> persona = <span class="keyword">new</span> <span class="function">Persona</span>(<span class="string">"Carlos"</span>, <span class="number">28</span>);
+                </div>
+                <button class="demo-button" onclick="demoSaludar()">Llamar a saludar()</button>
+                <p id="demo-output" style="margin-top: 1rem;"></p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Portafolio de Aprendizaje | Fundamentos Web - Semana 4: JavaScript</p>
+        </div>
+    </footer>
+
+    <script>
+        // Demo interactivo
+        class Persona {
+            constructor(nombre, edad) {
+                this.nombre = nombre;
+                this.edad = edad;
+            }
+            
+            saludar() {
+                return `Hola, soy ${this.nombre} y tengo ${this.edad} años`;
+            }
+        }
+        
+        function demoSaludar() {
+            const persona = new Persona("Carlos", 28);
+            document.getElementById('demo-output').textContent = persona.saludar();
+        }
+        
+        // Ejemplos adicionales para probar en consola
+        console.log("¡Bienvenido a la semana de JavaScript!");
+        console.log("Puedes probar estos ejemplos en la consola:");
+        console.log("- new Persona('Ana', 25).saludar()");
+        console.log("- Math.round(Math.PI * 100) / 100");
+        console.log("- [1, 2, 3].map(n => n * 2)");
+    </script>
+</body>
+</html>

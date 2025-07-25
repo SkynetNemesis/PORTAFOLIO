@@ -22,6 +22,25 @@
     },
     "projects": {
         "first-project-title": "Week 1",
-        "first-project-description": "In this section, the work related to the Web Application Development course is stored."
+        "first-project-description": "This week I learned to use Emmet, a tool that speeds up the writing of HTML and CSS code through abbreviations. I discovered how to generate complete structures with just a few characters, making interface development easier and improving my productivity in the code editor.",
+        "second-project-title": "Week 2",
+        "second-project-description": "During this week, I learned the fundamentals of HTML, understanding its basic structure, the correct use of semantic tags, and how a web page is built. Additionally, I explored the DOM (Document Object Model) and understood how it represents the hierarchical structure of HTML elements, allowing for manipulation from the browser.",
+        "third-project-title": "Week 3",
+        "third-project-description": "This week I learned to use CSS to style web pages, understanding how to apply colors, fonts, margins, and spacing. I also explored the use of selectors to target styles to specific elements, and studied Flexbox as a powerful tool for creating responsive designs and precise alignments in a page layout.",
+        "fourth-project-title": "Week 4",
+        "fourth-project-description": "This week I delved into the JavaScript language, learning its basic syntax and how to use control structures such as conditionals and loops to control the flow of the program. Additionally, I understood the principles of Object-Oriented Programming (OOP), creating objects, classes, and methods that allow for more efficient organization and reuse of code.",
+        "fifth-project-title": "Week 5",
+        "fifth-project-description": "During this week I learned about React, a JavaScript library designed to build user interfaces efficiently and modularly. I learned the basics such as components, JSX, and state management, understanding how React facilitates the creation of dynamic and reusable web applications through a component-based structure.",
+        "ten-project-title": "Week 10",
+        "ten-project-description": "This week I explored web development using Spring, a powerful Java framework that facilitates the creation of structured and scalable web applications. I learned to set up controllers, manage routes, and connect backend logic with dynamic views, understanding how Spring follows the MVC (Model-View-Controller) pattern to organize code in a modular and efficient way.",
+        "thirteen-project-title": "Week 13",
+        "thirteen-project-description": "This week I learned to work with Laravel, a modern and robust PHP framework that facilitates the backend development of web applications. I got to know its MVC-based structure, the use of routes, controllers, and migrations to manage databases, as well as the creation of secure and scalable functionalities using Artisan commands and Eloquent ORM.",
+        "fourteen-project-title": "Week 14",
+        "fourteen-project-description": "This week I learned how to develop web applications using Flask, a lightweight and flexible Python microframework for the backend. I understood how to create routes, handle HTTP requests, and render templates with Jinja2. Additionally, I explored the integration of forms and databases, which allowed me to build dynamic and functional applications quickly and in an organized manner.",
+        "fifteen-project-title": "week 15",
+        "fifteen-project-description": "During this week, I developed intelligent systems by combining tools such as Python, Flask, Django, and language models like LLaMA. I learned to integrate web interfaces with natural language processing capabilities, generating automatic and dynamic responses. Additionally, I explored the architecture of intelligent projects with a robust backend and AI-based services, consolidating knowledge about APIs, routes, templates, and deploying intelligent web applications."
+    },
+    "Languages": {
+        "button-description": "Learning"
     }
 }

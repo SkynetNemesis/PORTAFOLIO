@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Semana 14: Flask</title>
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #3a7bd5;
+            --accent-color: #00d2ff;
+            --light-color: #f5f5f5;
+            --dark-color: #2c3e50;
+            --flask-color: #000000;
+            --jinja-color: #b41717;
+            --sqlalchemy-color: #1c4e80;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.4rem;
+        }
+        
+        .tech-card {
+            background: white;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .code-block {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        
+        .keyword {
+            color: #3a7bd5;
+        }
+        
+        .function {
+            color: #00d2ff;
+        }
+        
+        .string {
+            color: #2ecc71;
+        }
+        
+        .comment {
+            color: #95a5a6;
+        }
+        
+        .decorator {
+            color: #b41717;
+        }
+        
+        .cli-command {
+            background-color: #2c3e50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portafolio de Aprendizaje</h1>
+            <p class="subtitle">Semana 14: Desarrollo Backend con Python Flask</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="content-section">
+            <h2>Introducción a Flask</h2>
+            <p>Flask es un microframework web ligero para Python que permite crear aplicaciones web rápidamente con un mínimo de código.</p>
+            
+            <div class="tech-card">
+                <h3>Características principales</h3>
+                <ul>
+                    <li>Microframework minimalista</li>
+                    <li>Sistema de routing simple</li>
+                    <li>Integración con Jinja2 para templates</li>
+                    <li>Extensible con extensiones</li>
+                    <li>Servidor de desarrollo integrado</li>
+                    <li>Compatibilidad con WSGI</li>
+                </ul>
+            </div>
+            
+            <h3>Instalación básica</h3>
+            <div class="cli-command">pip install flask</div>
+            
+            <h3>Aplicación Flask mínima</h3>
+            <div class="code-block">
+                <span class="comment"># app.py</span><br>
+                <span class="keyword">from</span> flask <span class="keyword">import</span> Flask<br>
+                <br>
+                app = Flask(__name__)<br>
+                <br>
+                <span class="decorator">@app.route</span>(<span class="string">'/'</span>)<br>
+                <span class="keyword">def</span> <span class="function">home</span>():<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">'¡Hola Mundo con Flask!'</span><br>
+                <br>
+                <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:<br>
+                &nbsp;&nbsp;app.run(debug=<span class="keyword">True</span>)
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Routing y Vistas</h2>
+            <p>Flask usa decoradores para definir rutas y las funciones asociadas que manejan las peticiones.</p>
+            
+            <h3>Ejemplos de routing</h3>
+            <div class="code-block">
+                <span class="decorator">@app.route</span>(<span class="string">'/about'</span>)<br>
+                <span class="keyword">def</span> <span class="function">about</span>():<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">'Acerca de nosotros'</span><br>
+                <br>
+                <span class="decorator">@app.route</span>(<span class="string">'/user/&lt;username&gt;'</span>)<br>
+                <span class="keyword">def</span> <span class="function">show_user</span>(username):<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">f'Usuario: {username}'</span><br>
+                <br>
+                <span class="decorator">@app.route</span>(<span class="string">'/post/&lt;int:post_id&gt;'</span>)<br>
+                <span class="keyword">def</span> <span class="function">show_post</span>(post_id):<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">f'Post #{post_id}'</span>
+            </div>
+            
+            <h3>Métodos HTTP</h3>
+            <div class="code-block">
+                <span class="decorator">@app.route</span>(<span class="string">'/login'</span>, methods=[<span class="string">'GET'</span>, <span class="string">'POST'</span>])<br>
+                <span class="keyword">def</span> <span class="function">login</span>():<br>
+                &nbsp;&nbsp;<span class="keyword">if</span> request.method == <span class="string">'POST'</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">'Procesar login'</span><br>
+                &nbsp;&nbsp;<span class="keyword">else</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">'Mostrar formulario login'</span>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Templates con Jinja2</h2>
+            <p>Flask integra Jinja2 como motor de plantillas para generar HTML dinámico.</p>
+            
+            <h3>Estructura básica</h3>
+            <div class="code-block">
+                <span class="comment"># app.py</span><br>
+                <span class="keyword">from</span> flask <span class="keyword">import</span> render_template<br>
+                <br>
+                <span class="decorator">@app.route</span>(<span class="string">'/hello/&lt;name&gt;'</span>)<br>
+                <span class="keyword">def</span> <span class="function">hello</span>(name):<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, name=name)
+            </div>
+            
+            <h3>Ejemplo de template (hello.html)</h3>
+            <div class="code-block">
+                <span class="comment">&lt;!-- templates/hello.html --&gt;</span><br>
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &lt;head&gt;<br>
+                &nbsp;&nbsp;&lt;title&gt;Saludo&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br>
+                &nbsp;&nbsp;&lt;h1&gt;Hola {{ name }}!&lt;/h1&gt;<br>
+                &nbsp;&nbsp;{% if name == 'admin' %}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Eres un usuario especial&lt;/p&gt;<br>
+                &nbsp;&nbsp;{% else %}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Bienvenido a nuestro sitio&lt;/p&gt;<br>
+                &nbsp;&nbsp;{% endif %}<br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Trabajando con Bases de Datos</h2>
+            <p>Flask no incluye un ORM nativo, pero se integra bien con SQLAlchemy.</p>
+            
+            <h3>Configuración de Flask-SQLAlchemy</h3>
+            <div class="code-block">
+                <span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy<br>
+                <br>
+                app.config[<span class="string">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="string">'sqlite:///database.db'</span><br>
+                app.config[<span class="string">'SQLALCHEMY_TRACK_MODIFICATIONS'</span>] = <span class="keyword">False</span><br>
+                <br>
+                db = SQLAlchemy(app)<br>
+                <br>
+                <span class="keyword">class</span> <span class="function">User</span>(db.Model):<br>
+                &nbsp;&nbsp;id = db.Column(db.Integer, primary_key=<span class="keyword">True</span>)<br>
+                &nbsp;&nbsp;username = db.Column(db.String(<span class="number">80</span>), unique=<span class="keyword">True</span>, nullable=<span class="keyword">False</span>)<br>
+                &nbsp;&nbsp;email = db.Column(db.String(<span class="number">120</span>), unique=<span class="keyword">True</span>, nullable=<span class="keyword">False</span>)<br>
+                <br>
+                &nbsp;&nbsp;<span class="keyword">def</span> <span class="function">__repr__</span>(<span class="keyword">self</span>):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">f'&lt;User {self.username}&gt;'</span>
+            </div>
+            
+            <h3>Operaciones básicas</h3>
+            <div class="code-block">
+                <span class="comment"># Crear tablas</span><br>
+                db.create_all()<br>
+                <br>
+                <span class="comment"># Crear usuario</span><br>
+                new_user = User(username=<span class="string">'juan'</span>, email=<span class="string">'juan@example.com'</span>)<br>
+                db.session.add(new_user)<br>
+                db.session.commit()<br>
+                <br>
+                <span class="comment"># Consultar usuarios</span><br>
+                users = User.query.all()<br>
+                admin = User.query.filter_by(username=<span class="string">'admin'</span>).first()
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Formularios y Validación</h2>
+            <p>Flask-WTF simplifica el manejo de formularios web con validación integrada.</p>
+            
+            <h3>Definición de formulario</h3>
+            <div class="code-block">
+                <span class="keyword">from</span> flask_wtf <span class="keyword">import</span> FlaskForm<br>
+                <span class="keyword">from</span> wtforms <span class="keyword">import</span> StringField, PasswordField<br>
+                <span class="keyword">from</span> wtforms.validators <span class="keyword">import</span> DataRequired, Email<br>
+                <br>
+                <span class="keyword">class</span> <span class="function">LoginForm</span>(FlaskForm):<br>
+                &nbsp;&nbsp;email = StringField(<span class="string">'Email'</span>, validators=[DataRequired(), Email()])<br>
+                &nbsp;&nbsp;password = PasswordField(<span class="string">'Password'</span>, validators=[DataRequired()])
+            </div>
+            
+            <h3>Manejo del formulario en la vista</h3>
+            <div class="code-block">
+                <span class="decorator">@app.route</span>(<span class="string">'/login'</span>, methods=[<span class="string">'GET'</span>, <span class="string">'POST'</span>])<br>
+                <span class="keyword">def</span> <span class="function">login</span>():<br>
+                &nbsp;&nbsp;form = LoginForm()<br>
+                &nbsp;&nbsp;<span class="keyword">if</span> form.validate_on_submit():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Procesar datos del formulario</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">'Login exitoso'</span><br>
+                &nbsp;&nbsp;<span class="keyword">return</span> render_template(<span class="string">'login.html'</span>, form=form)
+            </div>
+            
+            <h3>Template del formulario</h3>
+            <div class="code-block">
+                <span class="comment">&lt;!-- templates/login.html --&gt;</span><br>
+                &lt;form method=<span class="string">"POST"</span>&gt;<br>
+                &nbsp;&nbsp;{{ form.hidden_tag() }}<br>
+                &nbsp;&nbsp;&lt;div&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ form.email.label }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ form.email() }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{% for error in form.email.errors %}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span style="color: red;"&gt;{{ error }}&lt;/span&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{% endfor %}<br>
+                &nbsp;&nbsp;&lt;/div&gt;<br>
+                &nbsp;&nbsp;&lt;div&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ form.password.label }}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ form.password() }}<br>
+                &nbsp;&nbsp;&lt;/div&gt;<br>
+                &nbsp;&nbsp;&lt;button type="submit"&gt;Login&lt;/button&gt;<br>
+                &lt;/form&gt;
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Portafolio de Aprendizaje | Backend con Flask</p>
+        </div>
+    </footer>
+</body>
+</html>

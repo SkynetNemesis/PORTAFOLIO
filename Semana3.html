@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Semana 3: Fundamentos CSS</title>
+    <style>
+        :root {
+            --primary-color: #2980b9;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --css-color: #264de4;
+            --css3-color: #2965f1;
+            --flexbox-color: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--css-color), var(--css3-color), var(--flexbox-color));
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--accent-color);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-color);
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            margin: 1.8rem 0 1.2rem;
+            font-size: 1.5rem;
+        }
+        
+        h4 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            margin-bottom: 1.3rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1.8rem;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .info-box {
+            padding: 1.8rem;
+            margin: 1.8rem 0;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border-left: 5px solid var(--css-color);
+        }
+        
+        .history-timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .history-timeline::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--css-color), var(--css3-color));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -3.2rem;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--css-color);
+            border: 3px solid var(--css3-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .methods-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .methods-table thead tr {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: left;
+        }
+        
+        .methods-table th,
+        .methods-table td {
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .methods-table tbody tr:nth-of-type(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .methods-table tbody tr:hover {
+            background-color: #e9f5ff;
+        }
+        
+        .css-structure {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.8rem;
+            border-radius: 8px;
+            margin: 1.8rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.8;
+        }
+        
+        .selector {
+            color: #3498db;
+        }
+        
+        .property {
+            color: #e74c3c;
+        }
+        
+        .value {
+            color: #2ecc71;
+        }
+        
+        .comment {
+            color: #95a5a6;
+        }
+        
+        .selectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .selector-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--css-color);
+        }
+        
+        .selector-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .flexbox-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .flexbox-example {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--flexbox-color);
+        }
+        
+        .flexbox-visual {
+            background-color: #f8f9fa;
+            border: 1px dashed #ccc;
+            padding: 1rem;
+            margin: 1rem 0;
+            min-height: 150px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .flex-item {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            min-width: 50px;
+        }
+        
+        .code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        
+        .properties-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .properties-table th,
+        .properties-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .properties-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .properties-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: var(--dark-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-section {
+                padding: 1.8rem;
+            }
+            
+            .selectors-grid,
+            .flexbox-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portafolio de Aprendizaje</h1>
+            <p class="subtitle">Semana 3: Fundamentos de CSS - Estilos, Selectores y Flexbox</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="content-section">
+            <h2>¿Qué es CSS?</h2>
+            
+            <div class="info-box">
+                <p><strong>CSS (Cascading Style Sheets)</strong> es un lenguaje de diseño gráfico para definir y crear la presentación de un documento estructurado escrito en HTML.</p>
+                <p>Permite controlar el aspecto visual de las páginas web, incluyendo colores, fuentes, espaciados, tamaños, posicionamiento y mucho más.</p>
+            </div>
+            
+            <h3>Características principales:</h3>
+            <ul>
+                <li><strong>Separación de contenido y presentación:</strong> El HTML se encarga del contenido, el CSS del diseño</li>
+                <li><strong>Hojas de estilo en cascada:</strong> Las reglas se aplican en cascada según su especificidad</li>
+                <li><strong>Reutilización de código:</strong> Un mismo estilo puede aplicarse a múltiples elementos</li>
+                <li><strong>Responsive design:</strong> Permite crear diseños adaptables a diferentes dispositivos</li>
+                <li><strong>Animaciones y transiciones:</strong> Posibilita crear efectos visuales sin JavaScript</li>
+            </ul>
+            
+            <h3>Ventajas de usar CSS:</h3>
+            <ul>
+                <li>Mayor control sobre el diseño</li>
+                <li>Sitios más rápidos al reducir el código HTML</li>
+                <li>Mantenimiento más sencillo</li>
+                <li>Consistencia visual en todo el sitio</li>
+                <li>Accesibilidad mejorada</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>Evolución Histórica de CSS</h2>
+            
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <span class="timeline-year">1994</span>
+                    <div class="timeline-content">
+                        <p>Håkon Wium Lie propone por primera vez el concepto de CSS mientras trabajaba en el CERN junto con Tim Berners-Lee.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">1996</span>
+                    <div class="timeline-content">
+                        <p>Se publica CSS nivel 1 (CSS1) como recomendación oficial del W3C el 17 de diciembre.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">1998</span>
+                    <div class="timeline-content">
+                        <p>Lanzamiento de CSS nivel 2 (CSS2) con nuevas capacidades como posicionamiento absoluto y relativo.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">1999-2000</span>
+                    <div class="timeline-content">
+                        <p>Comienza el trabajo en CSS3, que se desarrolla como módulos independientes.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">2011</span>
+                    <div class="timeline-content">
+                        <p>Los primeros módulos de CSS3 (Selectores, Color, Media Queries) se convierten en recomendaciones oficiales.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">2012-2016</span>
+                    <div class="timeline-content">
+                        <p>Se estandarizan módulos importantes como Flexbox, Grid, Animaciones y Transiciones.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">2020-actualidad</span>
+                    <div class="timeline-content">
+                        <p>Nuevas características como CSS Variables, Subgrid, Container Queries y nuevas funciones de color.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Principales diferencias entre CSS2 y CSS3:</h3>
+            <ul>
+                <li><strong>Módulos independientes:</strong> CSS3 se divide en módulos que evolucionan por separado</li>
+                <li><strong>Nuevos selectores:</strong> Selectores de atributo, pseudo-clases avanzadas</li>
+                <li><strong>Efectos visuales:</strong> Sombras, gradientes, bordes redondeados</li>
+                <li><strong>Animaciones:</strong> Transiciones y animaciones nativas</li>
+                <li><strong>Diseño flexible:</strong> Flexbox y Grid para layouts complejos</li>
+                <li><strong>Responsive design:</strong> Media queries para adaptabilidad</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <h2>Formas de Enlazar CSS</h2>
+            
+            <table class="methods-table">
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Sintaxis</th>
+                        <th>Ventajas</th>
+                        <th>Desventajas</th>
+                        <th>Uso recomendado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Inline (en línea)</strong></td>
+                        <td><span class="code">&lt;p style="color: red;"&gt;</span></td>
+                        <td>Especifidad máxima, rápido para pruebas</td>
+                        <td>Difícil mantenimiento, mezcla contenido/presentación</td>
+                        <td>Evitar, solo para casos muy específicos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interno (embed)</strong></td>
+                        <td><span class="code">&lt;style&gt; p { color: red; } &lt;/style&gt;</span></td>
+                        <td>Útil para estilos específicos de una página</td>
+                        <td>No reutilizable entre páginas</td>
+                        <td>Pequeños proyectos o estilos únicos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Externo (archivo .css)</strong></td>
+                        <td><span class="code">&lt;link rel="stylesheet" href="estilos.css"&gt;</span></td>
+                        <td>Mantenimiento fácil, reutilizable, caché del navegador</td>
+                        <td>Requiere HTTP request adicional</td>
+                        <td>Recomendado para la mayoría de casos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>@import</strong></td>
+                        <td><span class="code">@import url("estilos.css");</span></td>
+                        <td>Permite modularizar CSS</td>
+                        <td>Rendimiento inferior (carga secuencial)</td>
+                        <td>Uso dentro de archivos CSS para modularización</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Ejemplo de enlace externo recomendado:</h3>
+            <div class="css-structure">
+                <span class="comment">&lt;!-- En el head del documento HTML --&gt;</span><br>
+                &lt;link <span class="property">rel</span>=<span class="value">"stylesheet"</span> <span class="property">href</span>=<span class="value">"css/estilos.css"</span>&gt;
+            </div>
+            
+            <h3>Jerarquía de aplicación (de mayor a menor prioridad):</h3>
+            <ol>
+                <li>Estilos en línea (inline)</li>
+                <li>Estilos internos (embed)</li>
+                <li>Estilos externos</li>
+                <li>Estilos del navegador (user agent)</li>
+            </ol>
+        </section>
+        
+        <section class="content-section">
+            <h2>Estructura CSS</h2>
+            
+            <div class="css-structure">
+                <span class="comment">/* Selector */</span><br>
+                <span class="selector">p</span>, <span class="selector">.clase</span>, <span class="selector">#id</span> {<br>
+                &nbsp;&nbsp;<span class="property">propiedad</span>: <span class="value">valor</span>; <span class="comment">/* Declaración */</span><br>
+                &nbsp;&nbsp;<span class="property">color</span>: <span class="value">#333</span>;<br>
+                &nbsp;&nbsp;<span class="property">margin</span>: <span class="value">1em 0</span>;<br>
+                &nbsp;&nbsp;<span class="property">padding</span>: <span class="value">10px</span>;<br>
+                }
+            </div>
+            
+            <h3>Componentes de una regla CSS:</h3>
+            <ul>
+                <li><strong>Selector:</strong> Indica a qué elementos HTML se aplicará el estilo</li>
+                <li><strong>Declaración:</strong> Conjunto de propiedades y valores entre llaves {}</li>
+                <li><strong>Propiedad:</strong> Característica que se quiere modificar (color, tamaño, etc.)</li>
+                <li><strong>Valor:</strong> Configuración específica para la propiedad</li>
+            </ul>
+            
+            <h3>Tipos de valores comunes:</h3>
+            <ul>
+                <li><strong>Colores:</strong> nombres (red), hexadecimal (#ff0000), rgb/rgba, hsl/hsla</li>
+                <li><strong>Unidades de longitud:</strong> px, em, rem, %, vh, vw</li>
+                <li><strong>Texto:</strong> fuentes, tamaños, estilos, decoraciones</li>
+                <li><strong>Imágenes:</strong> url(), gradientes</li>
+                <li><strong>Funciones:</strong> calc(), var(), attr()</li>
+            </ul>
+            
+            <h3>Comentarios en CSS:</h3>
+            <div class="css-structure">
+                <span class="comment">/* Esto es un comentario de una línea */</span><br><br>
+                <span class="comment">/*<br>
+                &nbsp;* Esto es un comentario<br>
+                &nbsp;* multilínea<br>
+                */</span>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Selectores CSS</h2>
+            
+            <div class="selectors-grid">
+                <div class="selector-card">
+                    <h4>Selectores básicos</h4>
+                    <ul>
+                        <li><span class="code">p</span> - Elementos &lt;p&gt;</li>
+                        <li><span class="code">.clase</span> - class="clase"</li>
+                        <li><span class="code">#id</span> - id="id"</li>
+                        <li><span class="code">*</span> - Universal (todos)</li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Combinadores</h4>
+                    <ul>
+                        <li><span class="code">div p</span> - Descendientes</li>
+                        <li><span class="code">div &gt; p</span> - Hijos directos</li>
+                        <li><span class="code">div + p</span> - Hermano adyacente</li>
+                        <li><span class="code">div ~ p</span> - Hermanos generales</li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Atributos</h4>
+                    <ul>
+                        <li><span class="code">[attr]</span> - Con el atributo</li>
+                        <li><span class="code">[attr=valor]</span> - Atributo exacto</li>
+                        <li><span class="code">[attr^=valor]</span> - Comienza con</li>
+                        <li><span class="code">[attr$=valor]</span> - Termina con</li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Pseudo-clases</h4>
+                    <ul>
+                        <li><span class="code">:hover</span> - Al pasar mouse</li>
+                        <li><span class="code">:nth-child(n)</span> - Hijo número n</li>
+                        <li><span class="code">:not(selector)</span> - Negación</li>
+                        <li><span class="code">:focus</span> - En foco</li>
+                    </ul>
+                </div>
+                
+                <div class="selector-card">
+                    <h4>Pseudo-elementos</h4>
+                    <ul>
+                        <li><span class="code">::before</span> - Antes del contenido</li>
+                        <li><span class="code">::after</span> - Después del contenido</li>
+                        <li><span class="code">::first-letter</span> - Primera letra</li>
+                        <li><span class="code">::selection</span> - Texto seleccionado</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Especificidad (de mayor a menor prioridad):</h3>
+            <ol>
+                <li><strong>!important</strong> - Rompe la cascada (evitar)</li>
+                <li><strong>Estilos en línea</strong> - style="..."</li>
+                <li><strong>IDs</strong> - #id</li>
+                <li><strong>Clases, atributos, pseudo-clases</strong> - .clase, [type="text"], :hover</li>
+                <li><strong>Elementos, pseudo-elementos</strong> - p, div, ::before</li>
+            </ol>
+        </section>
+        
+        <section class="content-section">
+            <h2>Flexbox</h2>
+            
+            <div class="info-box" style="border-left-color: var(--flexbox-color);">
+                <p><strong>Flexbox</strong> es un modelo de layout unidimensional que permite distribuir el espacio entre los ítems de una interfaz y mejorar las capacidades de alineación.</p>
+                <p>Ideal para diseños que deben funcionar en diferentes tamaños de pantalla.</p>
+            </div>
+            
+            <h3>Conceptos clave:</h3>
+            <ul>
+                <li><strong>Contenedor flex:</strong> Elemento con <span class="code">display: flex</span></li>
+                <li><strong>Ítems flex:</strong> Hijos directos del contenedor</li>
+                <li><strong>Eje principal:</strong> Dirección principal (row o column)</li>
+                <li><strong>Eje transversal:</strong> Dirección perpendicular al principal</li>
+            </ul>
+            
+            <div class="flexbox-container">
+                <div class="flexbox-example">
+                    <h4>Propiedades del contenedor</h4>
+                    <ul>
+                        <li><span class="code">display: flex | inline-flex</span></li>
+                        <li><span class="code">flex-direction: row | column | row-reverse | column-reverse</span></li>
+                        <li><span class="code">flex-wrap: nowrap | wrap | wrap-reverse</span></li>
+                        <li><span class="code">justify-content</span> (alineación en eje principal)</li>
+                        <li><span class="code">align-items</span> (alineación en eje transversal)</li>
+                        <li><span class="code">align-content</span> (alineación de múltiples líneas)</li>
+                        <li><span class="code">gap, row-gap, column-gap</span> (espacio entre ítems)</li>
+                    </ul>
+                    
+                    <h4>Ejemplo: justify-content</h4>
+                    <div class="flexbox-visual" style="justify-content: flex-start;">
+                        <div class="flex-item">1</div>
+                        <div class="flex-item">2</div>
+                        <div class="flex-item">3</div>
+                    </div>
+                    <p><span class="code">justify-content: flex-start;</span> (valor por defecto)</p>
+                </div>
+                
+                <div class="flexbox-example">
+                    <h4>Propiedades de los ítems</h4>
+                    <ul>
+                        <li><span class="code">order</span> (controla el orden de aparición)</li>
+                        <li><span class="code">flex-grow</span> (capacidad de crecimiento)</li>
+                        <li><span class="code">flex-shrink</span> (capacidad de reducción)</li>
+                        <li><span class="code">flex-basis</span> (tamaño base)</li>
+                        <li><span class="code">align-self</span> (alineación individual)</li>
+                    </ul>
+                    
+                    <h4>Ejemplo: align-items</h4>
+                    <div class="flexbox-visual" style="align-items: center; height: 200px;">
+                        <div class="flex-item">1</div>
+                        <div class="flex-item">2</div>
+                        <div class="flex-item">3</div>
+                    </div>
+                    <p><span class="code">align-items: center;</span></p>
+                </div>
+            </div>
+            
+            <h3>Ventajas de Flexbox:</h3>
+            <ul>
+                <li>Distribución inteligente del espacio disponible</li>
+                <li>Alineación poderosa en ambos ejes</li>
+                <li>Elementos pueden cambiar orden visual</li>
+                <li>Responsive sin media queries en muchos casos</li>
+                <li>Soporte en todos los navegadores modernos</li>
+            </ul>
+            
+            <h3>Ejemplo completo:</h3>
+            <div class="css-structure">
+                <span class="selector">.contenedor</span> {<br>
+                &nbsp;&nbsp;<span class="property">display</span>: <span class="value">flex</span>;<br>
+                &nbsp;&nbsp;<span class="property">flex-direction</span>: <span class="value">row</span>;<br>
+                &nbsp;&nbsp;<span class="property">justify-content</span>: <span class="value">space-between</span>;<br>
+                &nbsp;&nbsp;<span class="property">align-items</span>: <span class="value">center</span>;<br>
+                &nbsp;&nbsp;<span class="property">gap</span>: <span class="value">20px</span>;<br>
+                }<br><br>
+                
+                <span class="selector">.item</span> {<br>
+                &nbsp;&nbsp;<span class="property">flex</span>: <span class="value">1 0 200px</span>; <span class="comment">/* grow | shrink | basis */</span><br>
+                }
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Portafolio de Aprendizaje | Fundamentos Web - Semana 3: CSS</p>
+        </div>
+    </footer>
+</body>
+</html>
