@@ -40,7 +40,9 @@
         "fifteen-project-title": "week 15",
         "fifteen-project-description": "During this week, I developed intelligent systems by combining tools such as Python, Flask, Django, and language models like LLaMA. I learned to integrate web interfaces with natural language processing capabilities, generating automatic and dynamic responses. Additionally, I explored the architecture of intelligent projects with a robust backend and AI-based services, consolidating knowledge about APIs, routes, templates, and deploying intelligent web applications."
     },
-    "Languages": {
-        "button-description": "Learning"
+    "botones": {
+        "button-description": "Learning",
+        "theme-description-dark": "Dark Mode",
+        "theme-description-light": "Light Mode"
     }
 }

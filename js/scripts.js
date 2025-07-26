@@ -30,10 +30,12 @@ toggleTheme.addEventListener('click', ()=>{
     document.body.classList.toggle('dark'); /*toggle funciona como una clase de interruptor de entre si tiene o no tiene la clase*/
     if(toggleIcon.src.includes('moon.svg')){
         toggleIcon.src='assets/icons/sun.svg';
-        toggleText.textContent='Light Mode';
+        toggleText.textContent='Modo Claro';
+        toggleText.dataset.value='theme-description-light';
     }else{
         toggleIcon.src='assets/icons/moon.svg';
-        toggleText.textContent='Dark Mode';
+        toggleText.textContent='Modo Oscuro';
+        toggleText.dataset.value='theme-description-dark';
     }
 });
 
