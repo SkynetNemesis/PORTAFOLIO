@@ -1,375 +1,301 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio - Semana 15: Sistemas Inteligentes</title>
     <style>
-      :root {
-        --primary-color: #3776ab;
-        --secondary-color: #ffd43b;
-        --accent-color: #306998;
-        --light-color: #f5f5f5;
-        --dark-color: #2c3e50;
-        --python-color: #3776ab;
-        --django-color: #092e20;
-        --ai-color: #ff6b6b;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      body {
-        background-color: #f9f9f9;
-        color: #333;
-        line-height: 1.6;
-      }
-
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      header {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color),
-          var(--accent-color)
-        );
-        color: white;
-        padding: 2rem 0;
-        text-align: center;
-        border-radius: 0 0 10px 10px;
-        margin-bottom: 2rem;
-      }
-
-      h1 {
-        font-size: 2.2rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .subtitle {
-        font-size: 1.1rem;
-        opacity: 0.9;
-      }
-
-      .content-section {
-        background-color: white;
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      h2 {
-        color: var(--primary-color);
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-
-      h3 {
-        color: var(--secondary-color);
-        margin: 1.2rem 0 0.8rem;
-        font-size: 1.2rem;
-      }
-
-      p {
-        margin-bottom: 1rem;
-      }
-
-      ul,
-      ol {
-        margin-bottom: 1rem;
-        padding-left: 1.5rem;
-      }
-
-      li {
-        margin-bottom: 0.4rem;
-      }
-
-      .tech-card {
-        background: white;
-        border-radius: 6px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border-left: 4px solid var(--primary-color);
-      }
-
-      .code-block {
-        background-color: #2c3e50;
-        color: #ecf0f1;
-        padding: 1rem;
-        border-radius: 6px;
-        margin: 1rem 0;
-        overflow-x: auto;
-        font-family: "Courier New", Courier, monospace;
-        font-size: 0.9rem;
-      }
-
-      .keyword {
-        color: #3776ab;
-      }
-
-      .function {
-        color: #ffd43b;
-      }
-
-      .string {
-        color: #2ecc71;
-      }
-
-      .comment {
-        color: #95a5a6;
-      }
-
-      .decorator {
-        color: #306998;
-      }
-
-      .ai-tag {
-        color: #ff6b6b;
-      }
-
-      .cli-command {
-        background-color: #2c3e50;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-family: "Courier New", Courier, monospace;
-        margin: 0.5rem 0;
-        display: inline-block;
-      }
-
-      footer {
-        text-align: center;
-        padding: 1.5rem;
-        margin-top: 2rem;
-        color: #666;
-      }
-
-      @media (max-width: 768px) {
+        :root {
+            --primary-color: #3776ab;
+            --secondary-color: #ffd43b;
+            --accent-color: #306998;
+            --light-color: #f5f5f5;
+            --dark-color: #2c3e50;
+            --python-color: #3776ab;
+            --django-color: #092e20;
+            --ai-color: #ff6b6b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
         .container {
-          padding: 10px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 2rem;
+        }
+        
         h1 {
-          font-size: 1.8rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
         }
-      }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.4rem;
+        }
+        
+        .tech-card {
+            background: white;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .code-block {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        
+        .keyword {
+            color: #3776ab;
+        }
+        
+        .function {
+            color: #ffd43b;
+        }
+        
+        .string {
+            color: #2ecc71;
+        }
+        
+        .comment {
+            color: #95a5a6;
+        }
+        
+        .decorator {
+            color: #306998;
+        }
+        
+        .ai-tag {
+            color: #ff6b6b;
+        }
+        
+        .cli-command {
+            background-color: #2c3e50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <div class="container">
-        <h1>Portafolio de Aprendizaje</h1>
-        <p class="subtitle">Semana 15: Sistemas Inteligentes con Python</p>
-      </div>
+        <div class="container">
+            <h1>Portafolio de Aprendizaje</h1>
+            <p class="subtitle">Semana 15: Sistemas Inteligentes con Python</p>
+        </div>
     </header>
-
+    
     <main class="container">
-      <section class="content-section">
-        <h2>Introducción a Sistemas Inteligentes</h2>
-        <p>
-          Los sistemas inteligentes combinan frameworks web con tecnologías de
-          inteligencia artificial para crear aplicaciones avanzadas.
-        </p>
-
-        <div class="tech-card">
-          <h3>Tecnologías clave</h3>
-          <ul>
-            <li>
-              <strong>Flask/Django:</strong> Frameworks web para construir la
-              interfaz
-            </li>
-            <li>
-              <strong>LLAMA/Mistral:</strong> Modelos de lenguaje avanzados
-            </li>
-            <li><strong>Scikit-learn/TensorFlow:</strong> Machine Learning</li>
-            <li>
-              <strong>NLTK/Spacy:</strong> Procesamiento de lenguaje natural
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="content-section">
-        <h2>Integración de IA con Flask</h2>
-
-        <h3>Ejemplo: API de análisis de sentimientos</h3>
-        <div class="code-block">
-          <span class="keyword">from</span> flask
-          <span class="keyword">import</span> Flask, request, jsonify<br />
-          <span class="keyword">from</span> transformers
-          <span class="keyword">import</span> pipeline<br />
-          <br />
-          app = Flask(__name__)<br />
-          sentiment_analysis = pipeline(<span class="string"
-            >"sentiment-analysis"</span
-          >)<br />
-          <br />
-          <span class="decorator">@app.route</span>(<span class="string"
-            >'/analyze'</span
-          >, methods=[<span class="string">'POST'</span>])<br />
-          <span class="keyword">def</span>
-          <span class="function">analyze</span>():<br />
-          &nbsp;&nbsp;text = request.json.get(<span class="string">'text'</span
-          >)<br />
-          &nbsp;&nbsp;result = sentiment_analysis(text)[<span class="number"
-            >0</span
-          >]<br />
-          &nbsp;&nbsp;<span class="keyword">return</span> jsonify({<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">'sentiment'</span>:
-          result[<span class="string">'label'</span>],<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">'confidence'</span>:
-          result[<span class="string">'score'</span>]<br />
-          &nbsp;&nbsp;})<br />
-          <br />
-          <span class="keyword">if</span> __name__ ==
-          <span class="string">'__main__'</span>:<br />
-          &nbsp;&nbsp;app.run()
-        </div>
-      </section>
-
-      <section class="content-section">
-        <h2>Django + Modelos de Lenguaje</h2>
-
-        <h3>Configuración básica con LLAMA</h3>
-        <div class="code-block">
-          <span class="comment"># settings.py</span><br />
-          INSTALLED_APPS = [<br />
-          &nbsp;&nbsp;...<br />
-          &nbsp;&nbsp;<span class="string">'llama_index'</span>,<br />
-          &nbsp;&nbsp;<span class="string">'langchain'</span><br />
-          ]<br />
-          <br />
-          <span class="comment"># views.py</span><br />
-          <span class="keyword">from</span> langchain.llms
-          <span class="keyword">import</span> LlamaCpp<br />
-          <br />
-          <span class="keyword">def</span>
-          <span class="function">generate_text</span>(request):<br />
-          &nbsp;&nbsp;llm = LlamaCpp(<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;model_path=<span class="string"
-            >"models/llama-2-7b-chat.ggmlv3.q4_0.bin"</span
-          >,<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;temperature=<span class="number">0.75</span
-          ><br />
-          &nbsp;&nbsp;)<br />
-          &nbsp;&nbsp;prompt = request.POST.get(<span class="string"
-            >'prompt'</span
-          >)<br />
-          &nbsp;&nbsp;response = llm(prompt)<br />
-          &nbsp;&nbsp;<span class="keyword">return</span> JsonResponse({<span
-            class="string"
-            >'response'</span
-          >: response})
-        </div>
-      </section>
-
-      <section class="content-section">
-        <h2>Casos de Uso Avanzados</h2>
-
-        <div class="tech-card">
-          <h3>Aplicaciones prácticas</h3>
-          <ul>
-            <li>
-              <strong>Chatbots inteligentes:</strong> Respuestas contextuales
-            </li>
-            <li>
-              <strong>Generación de contenido:</strong> Artículos, resúmenes
-            </li>
-            <li>
-              <strong>Análisis de datos:</strong> Clasificación, predicción
-            </li>
-            <li>
-              <strong>Procesamiento de documentos:</strong> Extracción de
-              información
-            </li>
-          </ul>
-        </div>
-
-        <h3>Ejemplo: Sistema de recomendación</h3>
-        <div class="code-block">
-          <span class="keyword">import</span> numpy
-          <span class="keyword">as</span> np<br />
-          <span class="keyword">from</span> sklearn.neighbors
-          <span class="keyword">import</span> NearestNeighbors<br />
-          <br />
-          <span class="keyword">def</span>
-          <span class="function">recommend_products</span
-          >(user_preferences):<br />
-          &nbsp;&nbsp;<span class="comment"
-            ># Datos de productos (features)</span
-          ><br />
-          &nbsp;&nbsp;products = np.array([[<span class="number">5</span>,<span
-            class="number"
-            >1</span
-          >], [<span class="number">3</span>,<span class="number">1</span>],
-          [<span class="number">4</span>,<span class="number">2</span>], [<span
-            class="number"
-            >1</span
-          >,<span class="number">5</span>]])<br />
-          &nbsp;&nbsp;<br />
-          &nbsp;&nbsp;<span class="comment"># Entrenar modelo</span><br />
-          &nbsp;&nbsp;model = NearestNeighbors(n_neighbors=<span class="number"
-            >2</span
-          >)<br />
-          &nbsp;&nbsp;model.fit(products)<br />
-          &nbsp;&nbsp;<br />
-          &nbsp;&nbsp;<span class="comment"># Obtener recomendaciones</span
-          ><br />
-          &nbsp;&nbsp;distances, indices =
-          model.kneighbors([user_preferences])<br />
-          &nbsp;&nbsp;<span class="keyword">return</span> indices[<span
-            class="number"
-            >0</span
-          >]
-        </div>
-      </section>
-
-      <section class="content-section">
-        <h2>Despliegue de Modelos</h2>
-
-        <h3>Opciones de implementación</h3>
-        <ul>
-          <li><strong>API REST:</strong> Flask/Django como interfaz</li>
-          <li><strong>Microservicios:</strong> Contenedores Docker</li>
-          <li>
-            <strong>Serverless:</strong> AWS Lambda, Google Cloud Functions
-          </li>
-          <li><strong>Modelos optimizados:</strong> ONNX, TensorRT</li>
-        </ul>
-
-        <h3>Ejemplo Dockerfile para Flask + IA</h3>
-        <div class="code-block">
-          <span class="keyword">FROM</span> python:3.9-slim<br />
-          <br />
-          <span class="keyword">WORKDIR</span> /app<br />
-          <br />
-          <span class="keyword">COPY</span> requirements.txt .<br />
-          <span class="keyword">RUN</span> pip install --no-cache-dir -r
-          requirements.txt<br />
-          <br />
-          <span class="keyword">COPY</span> . .<br />
-          <br />
-          <span class="keyword">CMD</span> [<span class="string"
-            >"gunicorn"</span
-          >, <span class="string">"--bind"</span>,
-          <span class="string">"0.0.0.0:5000"</span>,
-          <span class="string">"app:app"</span>]
-        </div>
-      </section>
+        <section class="content-section">
+            <h2>Introducción a Sistemas Inteligentes</h2>
+            <p>Los sistemas inteligentes combinan frameworks web con tecnologías de inteligencia artificial para crear aplicaciones avanzadas.</p>
+            
+            <div class="tech-card">
+                <h3>Tecnologías clave</h3>
+                <ul>
+                    <li><strong>Flask/Django:</strong> Frameworks web para construir la interfaz</li>
+                    <li><strong>LLAMA/Mistral:</strong> Modelos de lenguaje avanzados</li>
+                    <li><strong>Scikit-learn/TensorFlow:</strong> Machine Learning</li>
+                    <li><strong>NLTK/Spacy:</strong> Procesamiento de lenguaje natural</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Integración de IA con Flask</h2>
+            
+            <h3>Ejemplo: API de análisis de sentimientos</h3>
+            <div class="code-block">
+                <span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, jsonify<br>
+                <span class="keyword">from</span> transformers <span class="keyword">import</span> pipeline<br>
+                <br>
+                app = Flask(__name__)<br>
+                sentiment_analysis = pipeline(<span class="string">"sentiment-analysis"</span>)<br>
+                <br>
+                <span class="decorator">@app.route</span>(<span class="string">'/analyze'</span>, methods=[<span class="string">'POST'</span>])<br>
+                <span class="keyword">def</span> <span class="function">analyze</span>():<br>
+                &nbsp;&nbsp;text = request.json.get(<span class="string">'text'</span>)<br>
+                &nbsp;&nbsp;result = sentiment_analysis(text)[<span class="number">0</span>]<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> jsonify({<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">'sentiment'</span>: result[<span class="string">'label'</span>],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">'confidence'</span>: result[<span class="string">'score'</span>]<br>
+                &nbsp;&nbsp;})<br>
+                <br>
+                <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:<br>
+                &nbsp;&nbsp;app.run()
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Django + Modelos de Lenguaje</h2>
+            
+            <h3>Configuración básica con LLAMA</h3>
+            <div class="code-block">
+                <span class="comment"># settings.py</span><br>
+                INSTALLED_APPS = [<br>
+                &nbsp;&nbsp;...<br>
+                &nbsp;&nbsp;<span class="string">'llama_index'</span>,<br>
+                &nbsp;&nbsp;<span class="string">'langchain'</span><br>
+                ]<br>
+                <br>
+                <span class="comment"># views.py</span><br>
+                <span class="keyword">from</span> langchain.llms <span class="keyword">import</span> LlamaCpp<br>
+                <br>
+                <span class="keyword">def</span> <span class="function">generate_text</span>(request):<br>
+                &nbsp;&nbsp;llm = LlamaCpp(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;model_path=<span class="string">"models/llama-2-7b-chat.ggmlv3.q4_0.bin"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;temperature=<span class="number">0.75</span><br>
+                &nbsp;&nbsp;)<br>
+                &nbsp;&nbsp;prompt = request.POST.get(<span class="string">'prompt'</span>)<br>
+                &nbsp;&nbsp;response = llm(prompt)<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> JsonResponse({<span class="string">'response'</span>: response})
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Casos de Uso Avanzados</h2>
+            
+            <div class="tech-card">
+                <h3>Aplicaciones prácticas</h3>
+                <ul>
+                    <li><strong>Chatbots inteligentes:</strong> Respuestas contextuales</li>
+                    <li><strong>Generación de contenido:</strong> Artículos, resúmenes</li>
+                    <li><strong>Análisis de datos:</strong> Clasificación, predicción</li>
+                    <li><strong>Procesamiento de documentos:</strong> Extracción de información</li>
+                </ul>
+            </div>
+            
+            <h3>Ejemplo: Sistema de recomendación</h3>
+            <div class="code-block">
+                <span class="keyword">import</span> numpy <span class="keyword">as</span> np<br>
+                <span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> NearestNeighbors<br>
+                <br>
+                <span class="keyword">def</span> <span class="function">recommend_products</span>(user_preferences):<br>
+                &nbsp;&nbsp;<span class="comment"># Datos de productos (features)</span><br>
+                &nbsp;&nbsp;products = np.array([[<span class="number">5</span>,<span class="number">1</span>], [<span class="number">3</span>,<span class="number">1</span>], [<span class="number">4</span>,<span class="number">2</span>], [<span class="number">1</span>,<span class="number">5</span>]])<br>
+                &nbsp;&nbsp;<br>
+                &nbsp;&nbsp;<span class="comment"># Entrenar modelo</span><br>
+                &nbsp;&nbsp;model = NearestNeighbors(n_neighbors=<span class="number">2</span>)<br>
+                &nbsp;&nbsp;model.fit(products)<br>
+                &nbsp;&nbsp;<br>
+                &nbsp;&nbsp;<span class="comment"># Obtener recomendaciones</span><br>
+                &nbsp;&nbsp;distances, indices = model.kneighbors([user_preferences])<br>
+                &nbsp;&nbsp;<span class="keyword">return</span> indices[<span class="number">0</span>]
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Despliegue de Modelos</h2>
+            
+            <h3>Opciones de implementación</h3>
+            <ul>
+                <li><strong>API REST:</strong> Flask/Django como interfaz</li>
+                <li><strong>Microservicios:</strong> Contenedores Docker</li>
+                <li><strong>Serverless:</strong> AWS Lambda, Google Cloud Functions</li>
+                <li><strong>Modelos optimizados:</strong> ONNX, TensorRT</li>
+            </ul>
+            
+            <h3>Ejemplo Dockerfile para Flask + IA</h3>
+            <div class="code-block">
+                <span class="keyword">FROM</span> python:3.9-slim<br>
+                <br>
+                <span class="keyword">WORKDIR</span> /app<br>
+                <br>
+                <span class="keyword">COPY</span> requirements.txt .<br>
+                <span class="keyword">RUN</span> pip install --no-cache-dir -r requirements.txt<br>
+                <br>
+                <span class="keyword">COPY</span> . .<br>
+                <br>
+                <span class="keyword">CMD</span> [<span class="string">"gunicorn"</span>, <span class="string">"--bind"</span>, <span class="string">"0.0.0.0:5000"</span>, <span class="string">"app:app"</span>]
+            </div>
+        </section>
     </main>
-
+    
     <footer>
-      <div class="container">
-        <p>© 2025 Portafolio de Aprendizaje | Sistemas Inteligentes</p>
-      </div>
+        <div class="container">
+            <p>© 2025 Portafolio de Aprendizaje | Sistemas Inteligentes</p>
+        </div>
     </footer>
-  </body>
+</body>
 </html>
